@@ -1,0 +1,1 @@
+ C:\\Users\\postw\\Important\\Projects\\Eclipse-2024-main\\.dart_tool\\flutter_build\\b2fdd2b973b6d33ea1c914e681d88a4a\\native_assets.yaml: 
