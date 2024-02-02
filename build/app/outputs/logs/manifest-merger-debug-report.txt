@@ -40,6 +40,7 @@ MERGED from [:camera_android] C:\Users\postw\Important\Projects\Eclipse-2024-mai
 MERGED from [:google_maps_flutter_android] C:\Users\postw\Important\Projects\Eclipse-2024-main\build\google_maps_flutter_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:image_picker_android] C:\Users\postw\Important\Projects\Eclipse-2024-main\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-21:12
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\postw\Important\Projects\Eclipse-2024-main\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:geocoding_android] C:\Users\postw\Important\Projects\Eclipse-2024-main\build\geocoding_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:flutter_js] C:\Users\postw\Important\Projects\Eclipse-2024-main\build\flutter_js\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:video_player_android] C:\Users\postw\Important\Projects\Eclipse-2024-main\build\video_player_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\postw\.gradle\caches\transforms-3\10573cd3896b16f5dcfdc7ca46129976\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:17:1-44:12
@@ -120,6 +121,8 @@ MERGED from [:image_picker_android] C:\Users\postw\Important\Projects\Eclipse-20
 MERGED from [:image_picker_android] C:\Users\postw\Important\Projects\Eclipse-2024-main\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\postw\Important\Projects\Eclipse-2024-main\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\postw\Important\Projects\Eclipse-2024-main\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:geocoding_android] C:\Users\postw\Important\Projects\Eclipse-2024-main\build\geocoding_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:geocoding_android] C:\Users\postw\Important\Projects\Eclipse-2024-main\build\geocoding_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:flutter_js] C:\Users\postw\Important\Projects\Eclipse-2024-main\build\flutter_js\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:flutter_js] C:\Users\postw\Important\Projects\Eclipse-2024-main\build\flutter_js\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:video_player_android] C:\Users\postw\Important\Projects\Eclipse-2024-main\build\video_player_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41

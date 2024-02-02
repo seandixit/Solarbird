@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart' show Geolocator, LocationAccuracy, LocationSettings, LocationPermission, Position;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_js/flutter_js.dart';
+import 'package:geocoding/geocoding.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({Key? key}) : super(key: key);
@@ -89,17 +90,23 @@ class _HomeTabState extends State<HomeTab> {
             ],
           ),
           bottom: PreferredSize(
-              preferredSize: Size.zero,
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 16.0), // Adjust the left padding as needed
+            preferredSize: Size.zero,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 0), // Add some spacing between the title and location message
+                Padding(
+                  padding: const EdgeInsets.only(left: 16.0),
+                  child: Align(
+                    alignment: Alignment.centerLeft, // Align to the left
                     child: Text(
                       locationMessage,
-                      style: TextStyle(fontSize: 14), // Adjust the font size as needed
+                      style: TextStyle(fontSize: 16),
                     ),
                   ),
                 ),
+              ],
+            ),
           ),
         ),
         body: Column(
@@ -150,6 +157,7 @@ class _HomeTabState extends State<HomeTab> {
                           setState(() {
                             online_color = Colors.green;
                             locationMessage = 'Lat: $lat, Long: $long, Alt: $altitude';
+                            getLocationInfo();
                             locationRetrieved = true;
                             _setMap();
                           });
@@ -199,7 +207,8 @@ class _HomeTabState extends State<HomeTab> {
       long = position.longitude.toString();
 
       setState(() {
-        locationMessage = 'Lat: $lat, Long: $long, Alt: $altitude';
+        //locationMessage = 'Lat: $lat, Long: $long, Alt: $altitude';
+        getLocationInfo();
         mapController.animateCamera(CameraUpdate.newLatLng(LatLng(position.latitude, position.longitude)));
         _setMap();
       });
@@ -228,6 +237,37 @@ class _HomeTabState extends State<HomeTab> {
     setCircumTable(jsRuntime);
   }
 
+  Future<void> getLocationInfo() async {
+    print("-----------------------------------------------------------");
+    try {
+      List<Placemark> placemarks = await placemarkFromCoordinates(double.parse(lat), double.parse(long));
+
+      if (placemarks != null && placemarks.isNotEmpty) {
+        Placemark currentPlace = placemarks[0];
+
+        String city = currentPlace.locality ?? '';
+        String state = currentPlace.administrativeArea ?? '';
+        String country = currentPlace.country ?? '';
+
+        if (city.isNotEmpty){
+          if (state.isNotEmpty){
+            city = city + ',';
+          }
+        }
+
+
+        setState(() {
+          locationMessage = '$city $state';
+        });
+        print('$city, $state, $country');
+      } else {
+        print('No location information available');
+      }
+    } catch (e) {
+      print('Error retrieving location information: $e');
+    }
+  }
+
   String extractTime(String pattern, String input) {
     RegExp regex = RegExp(pattern);
     var match = regex.firstMatch(input);
@@ -243,7 +283,7 @@ class _HomeTabState extends State<HomeTab> {
     final jsResult =
     jsRuntime.evaluate(loadJs + """recalculate($doubleLat, $doubleLong, $doubleAltitude)""");
     final jsStringResult = jsResult.stringResult;
-    print(jsStringResult);
+    //print(jsStringResult);
 
     List<String> resultList = jsStringResult.split(' ');
     setState(() {
