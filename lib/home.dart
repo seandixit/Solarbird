@@ -14,6 +14,38 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
+
+  bool locationRetrieved = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkLocationPermission();
+  }
+
+  void _checkLocationPermission() async {
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      setState(() {
+        locationRetrieved = false;
+      });
+    } else {
+      setState(() {
+        _getCurrentLocation().then((value) {
+          lat = '${value.latitude}';
+          long = '${value.longitude}';
+          altitude = '${value.altitude}';
+          setState(() {
+            online_color = Colors.green;
+            locationMessage = 'Lat: $lat, Long: $long, Alt: $altitude';
+            getLocationInfo();
+            locationRetrieved = true;
+            _setMap();
+          });});
+        _liveLocation();
+        locationRetrieved = true;
+      });
+    }}
   final JavascriptRuntime jsRuntime = getJavascriptRuntime();
 
   String locationMessage = "";
@@ -21,9 +53,9 @@ class _HomeTabState extends State<HomeTab> {
   late String long;
   late String altitude;
 
-  bool locationRetrieved = false;
 
-  late GoogleMap map;
+
+  GoogleMap? map;
   late GoogleMapController mapController;
 
   String online = "●";
@@ -122,7 +154,7 @@ class _HomeTabState extends State<HomeTab> {
                       height: MediaQuery.of(context).size.height * 0.4,
                       child: map,
                     ),
-                    SizedBox(height: 10), // Add some spacing
+                    SizedBox(height: 40), // Add some spacing
 
                     // Text section for time until different eclipse events
                     Container(
