@@ -35,6 +35,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    double bottomNavigationBarHeight = MediaQuery.of(context).size.height * 0.1;
     return MaterialApp(
       home: Scaffold(
         body: Center(
@@ -43,31 +44,54 @@ class _MyAppState extends State<MyApp> {
             controller: controller,
             children: _list,),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          unselectedLabelStyle: const TextStyle(color: Colors.black),
-          selectedLabelStyle: const TextStyle(color: Colors.black),
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.black,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.white,
+          onPressed: () {}, // TODO: "MAKE AN OBSERVATION"
+          tooltip: 'Increment',
+          child: Icon(Icons.add),
+          shape: CircleBorder(),
+        ),
+
+        bottomNavigationBar: SizedBox(
+          height: bottomNavigationBarHeight,
+          child: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            unselectedLabelStyle: TextStyle(color: Colors.black),
+            selectedLabelStyle: TextStyle(color: Colors.black),
+            selectedItemColor: Colors.black,
+            unselectedItemColor: Colors.black,
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
                 icon: Icon(CupertinoIcons.home),
-                label: "Home"
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.pen),
-              label: "Learn",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.alt),
-              label: "Getting started"
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.search),
-                label: "Observation"
-            )
-          ],
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
+                label: "Home",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(CupertinoIcons.book),
+                label: "Guide",
+              ),
+              BottomNavigationBarItem(
+                icon: SizedBox.shrink(), // Empty space for the middle
+                label: "", // No label for the empty space
+              ),
+
+              BottomNavigationBarItem(
+                icon: Icon(CupertinoIcons.list_dash),
+                label: "List",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(CupertinoIcons.info),
+                label: "About",
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
+            selectedFontSize: 15.0,
+            unselectedFontSize: 15.0,
+            iconSize: 30.0,
+            backgroundColor: Colors.grey[200],
+            elevation: 0,
+          ),
         ),
       ),
     );
