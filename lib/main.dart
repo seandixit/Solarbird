@@ -4,8 +4,9 @@ import 'package:eclipse/aboutPages/terms.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_js/flutter_js.dart';
 
-
+import 'observation.dart' as observation;
 import 'learning.dart' as learning;
+import 'observation.dart';
 import 'observe2.dart' as observe;
 import 'started.dart' as started;
 import 'home.dart' as home;
@@ -18,7 +19,6 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
-
 }
 
 class MyApp extends StatefulWidget {
@@ -36,8 +36,9 @@ class _MyAppState extends State<MyApp> {
   List<Widget> _list = <Widget>[
     new Center(child: new home.HomeTab()),
     new Center(child: new guide.GuideTab()),         // TODO: fyi I replaced LearningTab for this
-    new Center(child: new started.StartedTab()),
-    new Center(child: new about.AboutTab())                // TODO: fyi I replaced ObserveTab for this
+    new Center(child: null), // TODO fix that you can click on this
+    new Center(child: new about.AboutTab()), // TODO: fyi I replaced ObserveTab for this
+    new Center(child: observation.observation())
   ];
 
   @override
@@ -50,6 +51,7 @@ class _MyAppState extends State<MyApp> {
         '/languagepage': (context) => const LanguagePage(),
         '/privacypage': (context) => const PrivacyPage(),
         '/termspage': (context) => const TermsPage(),
+
       },
       home: Scaffold(
         body: Center(
@@ -60,11 +62,10 @@ class _MyAppState extends State<MyApp> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.white,
-          onPressed: () {}, // TODO: "MAKE AN OBSERVATION"
-          tooltip: 'Increment',
-          child: Icon(Icons.add),
-          shape: CircleBorder(),
+          backgroundColor: Colors.yellow,
+          onPressed: () {controller.jumpToPage(5);}, // TODO: "MAKE AN OBSERVATION"
+          shape: const CircleBorder(),
+          child: const Icon(Icons.camera_alt, color: Colors.black,),
         ),
 
         bottomNavigationBar: SizedBox(
@@ -75,7 +76,7 @@ class _MyAppState extends State<MyApp> {
             selectedLabelStyle: TextStyle(color: Colors.black),
             selectedItemColor: Colors.black,
             unselectedItemColor: Colors.black,
-            items: <BottomNavigationBarItem>[
+            items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(CupertinoIcons.location_circle),
                 label: "Eclipse",
