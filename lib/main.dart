@@ -1,3 +1,6 @@
+import 'package:eclipse/aboutPages/language.dart';
+import 'package:eclipse/aboutPages/privacy.dart';
+import 'package:eclipse/aboutPages/terms.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_js/flutter_js.dart';
 
@@ -6,6 +9,10 @@ import 'learning.dart' as learning;
 import 'observe2.dart' as observe;
 import 'started.dart' as started;
 import 'home.dart' as home;
+import 'about.dart' as about;
+import 'guide.dart' as guide;
+import 'aboutPages/project.dart';
+import 'aboutPages/feedback.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -28,15 +35,22 @@ class _MyAppState extends State<MyApp> {
   );
   List<Widget> _list = <Widget>[
     new Center(child: new home.HomeTab()),
-    new Center(child: new learning.LearningTab()),
+    new Center(child: new guide.GuideTab()),         // TODO: fyi I replaced LearningTab for this
     new Center(child: new started.StartedTab()),
-    new Center(child: new observe.ObserveTab())
+    new Center(child: new about.AboutTab())                // TODO: fyi I replaced ObserveTab for this
   ];
 
   @override
   Widget build(BuildContext context) {
     double bottomNavigationBarHeight = MediaQuery.of(context).size.height * 0.1;
     return MaterialApp(
+      routes: {
+        '/projectpage': (context) => const ProjectPage(),
+        '/feedbackpage': (context) => const FeedbackPage(),
+        '/languagepage': (context) => const LanguagePage(),
+        '/privacypage': (context) => const PrivacyPage(),
+        '/termspage': (context) => const TermsPage(),
+      },
       home: Scaffold(
         body: Center(
           child: PageView(
@@ -63,8 +77,8 @@ class _MyAppState extends State<MyApp> {
             unselectedItemColor: Colors.black,
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.home),
-                label: "Home",
+                icon: Icon(CupertinoIcons.location_circle),
+                label: "Eclipse",
               ),
               BottomNavigationBarItem(
                 icon: Icon(CupertinoIcons.book),
@@ -77,7 +91,7 @@ class _MyAppState extends State<MyApp> {
 
               BottomNavigationBarItem(
                 icon: Icon(CupertinoIcons.list_dash),
-                label: "List",
+                label: "Log",
               ),
               BottomNavigationBarItem(
                 icon: Icon(CupertinoIcons.info),

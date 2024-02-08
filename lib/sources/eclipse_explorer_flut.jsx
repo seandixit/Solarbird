@@ -442,37 +442,47 @@ function readform(lat, long, alt) {
     // (2) Altitude (metres): 241.4m
     // (3) West time zone (hours): 05:00 W
 
+    //lat_arr = ConvertDDToDMS(lat, false);
     // Latitude
-    var latDegrees = Math.abs(parseInt(lat)) //39;
-    console.log(latDegrees)
-    var latMinutes = 0//46;
-    var latSeconds = 0;
+    //var latDegrees = Math.abs(parseInt(lat_arr[deg])) //39;
+    //console.log(latDegrees)
+    //var latMinutes = Math.abs(parseInt(lat_arr[min]))//46;
+    //var latSeconds = Math.abs(parseInt(lat_arr[sec]));
     var latDirection = 1; // 1 for North
     if (lat < 0){
         latDirection = -1} // south
     //obsvconst[0] = (latDirection * (latDegrees + latMinutes / 60.0 + latSeconds / 3600.0)) * (Math.PI / 180.0);
-    obsvconst[0] = latDegrees 
+    obsvconst[0] = Math.abs(lat) 
     obsvconst[0] = obsvconst[0]*latDirection
     obsvconst[0]= obsvconst[0]*Math.PI/180.0
 
 
+    //long_arr = ConvertDDToDMS(long, true);
     // Longitude
-    var lonDegrees = Math.abs(parseInt(long)) //86;
-    var lonMinutes = 0//9;
-    var lonSeconds = 0;
+    //var lonDegrees = Math.abs(parseInt(long_arr[deg])) //86;
+    //var lonMinutes = Math.abs(parseInt(long_arr[min]))//9;
+    //var lonSeconds = Math.abs(parseInt(long_arr[sec]));
     var lonDirection = 1; // East
     if (long > 0) {
        lonDirection = -1; }// -1 for West
-    obsvconst[1] = (lonDirection * (lonDegrees + lonMinutes / 60.0 + lonSeconds / 3600.0)) * (Math.PI / 180.0);
-
+    //obsvconst[1] = (lonDirection * (lonDegrees + lonMinutes / 60.0 + lonSeconds / 3600.0)) * (Math.PI / 180.0);
+    obsvconst[1] = Math.abs(long) * (Math.PI / 180.0);
     // Altitude
     obsvconst[2] = parseInt(alt)//241.4;
 
     // Time zone
-    var timeZoneHours = 5
-    obsvconst[3] = 0;
-    obsvconst[3] = 5 + obsvconst[3]/60.0;
-    obsvconst[3]= 1 * obsvconst[3];
+    // Split the timeZone string by ':'
+    //const parts = timeZone.split(':');
+
+    // Extract hours and minutes
+    //const hours = parseInt(parts[0], 10); // Parse hours as integer
+    //const minutes = parseInt(parts[1], 10); // Parse minutes as integer
+
+    //var timeZoneHours = 5
+    //obsvconst[3] = minutes;
+    //obsvconst[3] = hours + obsvconst[3]/60.0;
+    //obsvconst[3]= 1 * obsvconst[3];
+    obsvconst[3] = 0
 
     // Get the observer's geocentric position
     tmp = Math.atan(0.99664719 * Math.tan(obsvconst[0]));
@@ -846,4 +856,14 @@ function SE2001(lat, long, alt) {
      0.0046683,   0.0046450,
   ));}
 
-  console.log(recalculate(44, -93, 0));
+  //function ConvertDDToDMS(D, lng) {
+  //  return {
+  //    dir: D < 0 ? (lng ? "W" : "S") : lng ? "E" : "N",
+  //    deg: 0 | (D < 0 ? (D = -D) : D),
+  //    min: 0 | (((D += 1e-9) % 1) * 60),
+  //    sec: (0 | (((D * 60) % 1) * 6000)) / 100,
+  //  };
+  //}
+
+  
+  console.log(recalculate(44.966667, 93.25, 0));

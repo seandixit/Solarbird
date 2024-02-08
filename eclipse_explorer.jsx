@@ -433,7 +433,7 @@ function getall(elements) {
   }
 
 // instead of reading form, we populate obsvconst with our data
-function readform() {
+function readform(lat, long, alt, timeZone) {
     var tmp;
 
     // Set observer's constants manually
@@ -442,34 +442,53 @@ function readform() {
     // (2) Altitude (metres): 241.4m
     // (3) West time zone (hours): 05:00 W
 
+    //lat_arr = ConvertDDToDMS(lat, false);
     // Latitude
-    var latDegrees = 32//39;
-    var latMinutes = 47//46;
-    var latSeconds = 0;
+    //var latDegrees = Math.abs(parseInt(lat_arr[deg])) //39;
+    //console.log(latDegrees)
+    //var latMinutes = Math.abs(parseInt(lat_arr[min]))//46;
+    //var latSeconds = Math.abs(parseInt(lat_arr[sec]));
     var latDirection = 1; // 1 for North
-    obsvconst[0] = (latDirection * (latDegrees + latMinutes / 60.0 + latSeconds / 3600.0)) * (Math.PI / 180.0);
+    if (lat < 0){
+        latDirection = -1} // south
+    //obsvconst[0] = (latDirection * (latDegrees + latMinutes / 60.0 + latSeconds / 3600.0)) * (Math.PI / 180.0);
+    obsvconst[0] = Math.abs(lat) 
+    obsvconst[0] = obsvconst[0]*latDirection
+    obsvconst[0]= obsvconst[0]*Math.PI/180.0
 
+
+    //long_arr = ConvertDDToDMS(long, true);
     // Longitude
-    var lonDegrees = 96//86;
-    var lonMinutes = 49//9;
-    var lonSeconds = 0;
-    var lonDirection = 1; // 1 for West
-    obsvconst[1] = (lonDirection * (lonDegrees + lonMinutes / 60.0 + lonSeconds / 3600.0)) * (Math.PI / 180.0);
-
+    //var lonDegrees = Math.abs(parseInt(long_arr[deg])) //86;
+    //var lonMinutes = Math.abs(parseInt(long_arr[min]))//9;
+    //var lonSeconds = Math.abs(parseInt(long_arr[sec]));
+    var lonDirection = 1; // East
+    if (long > 0) {
+       lonDirection = -1; }// -1 for West
+    //obsvconst[1] = (lonDirection * (lonDegrees + lonMinutes / 60.0 + lonSeconds / 3600.0)) * (Math.PI / 180.0);
+    obsvconst[1] = Math.abs(long) * (Math.PI / 180.0);
     // Altitude
-    obsvconst[2] = 132.6//241.4;
+    obsvconst[2] = parseInt(alt)//241.4;
 
     // Time zone
-    var timeZoneHours = 6//5;
-    obsvconst[3] = 0;
-    obsvconst[3] = 5 + obsvconst[3]/60.0;
-    obsvconst[3]= 1 * obsvconst[3];
+    // Split the timeZone string by ':'
+    const parts = timeZone.split(':');
+
+    // Extract hours and minutes
+    const hours = parseInt(parts[0], 10); // Parse hours as integer
+    const minutes = parseInt(parts[1], 10); // Parse minutes as integer
+
+    //var timeZoneHours = 5
+    obsvconst[3] = minutes;
+    obsvconst[3] = hours + obsvconst[3]/60.0;
+    //obsvconst[3]= 1 * obsvconst[3];
 
     // Get the observer's geocentric position
     tmp = Math.atan(0.99664719 * Math.tan(obsvconst[0]));
     obsvconst[4] = 0.99664719 * Math.sin(tmp) + (obsvconst[2] / 6378140.0) * Math.sin(obsvconst[0]);
     obsvconst[5] = Math.cos(tmp) + (obsvconst[2] / 6378140.0 * Math.cos(obsvconst[0]));
 
+    console.log(obsvconst)
     // The index of the selected eclipse...
     // obsvconst[6] = 28 * (parseInt(document.eclipseform.index.options[document.eclipseform.index.selectedIndex].value) + 65);
 }
@@ -551,16 +570,16 @@ function gettime(elements,circumstances) {
     }
     if (circumstances[40] == 1) {
       console.log("TIME: " + ans + " (below horizon)");
-      return
+      return ans //+ " (below horizon)"
     } else if (circumstances[40] == 2) {
         console.log("TIME: " + ans + " (sunrise)");
-        return
+        return ans //+ " (sunrise)"
     } else if (circumstances[40] == 3) {
         console.log("TIME: " + ans+"(sunset)");
-        return
+        return ans //+"(sunset)";
     } else {
         console.log("TIME: " + ans);
-        return 
+        return ans
     }
   }
   
@@ -666,7 +685,7 @@ function getmagnitude() {
     a = Math.floor(1000.0*mid[37]+0.5)/1000.0
     if (mid[40] == 1) {
       console.log("MAGNITUDE: " + a + "(below horizon)")
-      return 
+      return a + "(below horizon)"
     }
     if (mid[40] == 2) {
       a = a + "(r)"
@@ -675,7 +694,7 @@ function getmagnitude() {
       a = a + "(s)"
     }
     console.log("MAGNITUDE: " + a)
-    return
+    return a 
   }
 
 // Get the coverage
@@ -699,21 +718,22 @@ function getcoverage() {
     }
     if (mid[40] == 1) {
       console.log("COVERAGE: " + a + "(below horizon)")
-      return 
+      return a // + "(below horizon)"
     }
     if (mid[40] == 2) {
-      a = a + "(r)"
+      a = a //+ "(r)"
     }
     if (mid[40] == 3) {
-      a = a + "(s)"
+      a = a //+ "(s)"
     }
     console.log("COVERAGE: " + a)
-    return
+    return a
   }
 
 // CALCULATE!
-function calculatefor(el) {
-    readform() // sets obsvconst
+function calculatefor(lat, long, alt, timeZone, el) {
+  returnList = []
+    readform(lat, long, alt, timeZone) // sets obsvconst
     console.log(obsvconst)
     for (i = 0 ; i < el.length ; i+=28) {
       obsvconst[6] = i
@@ -733,18 +753,33 @@ function calculatefor(el) {
         // Partial eclipse start
         if (c1[40] == 4) {
         } else {
-        // Partial eclipse start time
-        console.log(gettime(el,c1));
+        // Partial eclipse start time -----------------
+        getT = gettime(el,c1)
+        if (getT == "" || getT == null || getT == undefined){
+          getT = "N/A"
+         }
+        console.log(getT);
+        returnList.push(getT + "ec_start"); 
         // Partial eclipse alt
         console.log(getalt(c1));
         }
-      // Central eclipse time
+      // Central eclipse time  -------------------------
       if ((mid[39] > 1) && (c2[40] != 4)) {
-          console.log(gettime(el,c2));
+          getT = gettime(el,c2);
+          if (getT == "" || getT == null || getT == undefined) {
+            getT = "N/A"
+          }
+          console.log(getT);
+          returnList.push(getT + "tot_start"); 
       } else {
       }
-      // Maximum eclipse time
-      console.log(gettime(el,mid));
+      // Maximum eclipse time -------------------------
+      getT = gettime(el,mid);
+      if (getT == "" || getT == null || getT == undefined) {
+        getT = "N/A"
+      }
+      console.log(getT);
+      returnList.push(getT + "max_ec"); 
       // Maximum eclipse alt
       console.log(getalt(mid));
       // Maximum eclipse azi
@@ -762,10 +797,12 @@ function calculatefor(el) {
         // ... sun alt
         console.log(getalt(c4));
         }
-      // Eclipse magnitude
+      // Eclipse magnitude ---------------------------
       console.log(getmagnitude());
-      // Coverage
+      returnList.push(getmagnitude() + "mag"); 
+      // Coverage  ------------------------------------
       console.log(getcoverage());
+      returnList.push(getcoverage() + "obsc");
       // Central duration
       if (mid[39] > 1) {
         val = getduration();
@@ -775,6 +812,8 @@ function calculatefor(el) {
       console.log(val);
       }
     }
+    var resultString = returnList.join(' ');
+    return resultString;
   }
 
   function settimeperiod(timeperiod) {
@@ -793,8 +832,8 @@ function calculatefor(el) {
     SE2001();
   }
 
-  function recalculate() {
-    SE2001()
+  function recalculate(lat, long, alt, timeZone) {
+    return SE2001(lat, long, alt, timeZone)
   }
 
 // IMPORTANT CUT --------------------------------------------------------------------------------------------------------------------------
@@ -803,8 +842,8 @@ function calculatefor(el) {
 //   "Five Millennium Canon of Solar Eclipses: -1999 to +3000",
 //      Fred Espenak and Jean Meeus, NASA/TP-2006-214141, October 2006
 //
-function SE2001() {
-    calculatefor(new Array(
+function SE2001(lat, long, alt, timeZone) {
+    return calculatefor(lat, long, alt, timeZone, new Array(
   // 2024  4  8
   2460409.262840,  18.0,  -4.0,   4.0,    74.0,    74.0,
     -0.3182440,   0.5117116,  3.260e-05, -8.420e-06,
@@ -814,8 +853,16 @@ function SE2001() {
      0.5358140,   0.0000618, -1.280e-05,
     -0.0102720,   0.0000615, -1.270e-05,
      0.0046683,   0.0046450,
-  ));
-  }
-   
-  recalculate();
-   
+  ));}
+
+  //function ConvertDDToDMS(D, lng) {
+  //  return {
+  //    dir: D < 0 ? (lng ? "W" : "S") : lng ? "E" : "N",
+  //    deg: 0 | (D < 0 ? (D = -D) : D),
+  //    min: 0 | (((D += 1e-9) % 1) * 60),
+  //    sec: (0 | (((D * 60) % 1) * 6000)) / 100,
+  //  };
+  //}
+
+  
+  console.log(recalculate(44.966667, 93.25, 0, "5:00:00"));

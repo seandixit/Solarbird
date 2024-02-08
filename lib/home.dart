@@ -306,16 +306,37 @@ class _HomeTabState extends State<HomeTab> {
     return match != null ? match.group(1) ?? "" : "N/A";
   }
 
+  String _printDuration(Duration duration) {
+    String negativeSign = duration.isNegative ? '' : '-';
+    String twoDigits(int n) => n.toString().padLeft(2, "0");
+    String twoDigitMinutes = twoDigits(duration.inMinutes.remainder(60).abs());
+    String twoDigitSeconds = twoDigits(duration.inSeconds.remainder(60).abs());
+    return "$negativeSign${twoDigits(duration.inHours)}:$twoDigitMinutes:$twoDigitSeconds";
+  }
+
   void setCircumTable( JavascriptRuntime jsRuntime) async {
     // sets solar eclipse data
     String loadJs = await rootBundle.loadString("lib/sources/eclipse_explorer_flut.jsx");
     double doubleLat = double.parse(lat);
     double doubleLong = double.parse(long);
     double doubleAltitude = double.parse(altitude);
+    DateTime dateTime = DateTime.now();
+    Duration timeZone = dateTime.timeZoneOffset;
+    String strTime = _printDuration(timeZone);
+    // Remove '-' if present
+    if (strTime.startsWith("-")) {
+      strTime = strTime.substring(1);
+    } else {
+      // Add '-' if not present
+      strTime = "-" + strTime;
+    }
+    print(_printDuration(timeZone));
+    print(strTime);
+    print("---------------------------------------------------------------------------^");
     final jsResult =
     jsRuntime.evaluate(loadJs + """recalculate($doubleLat, $doubleLong, $doubleAltitude)""");
     final jsStringResult = jsResult.stringResult;
-    //print(jsStringResult);
+    print(jsStringResult);
 
     List<String> resultList = jsStringResult.split(' ');
     setState(() {
@@ -359,6 +380,8 @@ class _HomeTabState extends State<HomeTab> {
         ],
       );
     });
+
+
   }
 
 }
