@@ -33,9 +33,12 @@ class _MyAppState extends State<MyApp> {
   PageController controller=PageController(
     initialPage: 0,
   );
+
+  // THE SIZE OF THIS LIST MATTERS TO HOW THE NAVIGATION WORKS
   List<Widget> _list = <Widget>[
     new Center(child: new home.HomeTab()),
     new Center(child: new guide.GuideTab()),         // TODO: fyi I replaced LearningTab for this
+    new Center(child: null), // TODO fix that you can click on this
     new Center(child: null), // TODO fix that you can click on this
     new Center(child: new about.AboutTab()), // TODO: fyi I replaced ObserveTab for this
     new Center(child: observation.observation())
@@ -61,7 +64,7 @@ class _MyAppState extends State<MyApp> {
             children: _list,),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: FloatingActionButton(
+        floatingActionButton: FloatingActionButton.large(
           backgroundColor: Colors.yellow,
           onPressed: () {controller.jumpToPage(5);}, // TODO: "MAKE AN OBSERVATION"
           shape: const CircleBorder(),
@@ -113,10 +116,14 @@ class _MyAppState extends State<MyApp> {
   }
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-      controller.jumpToPage(index);
-    });
+    if (index == 3) {
+      return;
+    } else {
+      setState(() {
+        _selectedIndex = index;
+        controller.jumpToPage(index);
+      });
+    }
   }
 
 
