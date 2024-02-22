@@ -1,15 +1,30 @@
+import 'dart:ffi';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:eclipse/observe2.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'package:selectable_box/selectable_box.dart';
+import 'package:timer_count_down/timer_count_down.dart';
+import 'package:eclipse/home.dart';
 
-const List<String> numberofbirds = <String>['1', '2-10', '10+'];
-const List<String> howbig = <String>['small', 'medium', 'large'];
-const List<String> whereisit = <String>['on the ground', 'flying', 'in a tree'];
-const List<String> species = <String>[
-  'American Robin', 'Northern Cardinal','Blue Jay',"Steller's Jay",
-'Mourning Dove', 'American Crow', 'European Starling', 'Northern Mockingbird', 'Black-billed Magpie',
-'Dark-eyed Junco', 'Black-capped Chickadee', 'White-breasted Nuthatch','Tufted Titmouse', 'House Sparrow',
-'House Wren', 'House Finch', 'American Goldfinch', 'Downy Woodpecker', 'Hairy Woodpecker', 'Red-bellied Woodpecker'];
 
+FirebaseFirestore db = FirebaseFirestore.instance;
+
+Map<String, dynamic> observationData = <String, dynamic>{
+  "flying" : false,
+  "ground" : false,
+  "tree" : false,
+  "singing" : false,
+  "eating" : false,
+  "sleeping" : false,
+  "lat" : null,
+  "lang" : null,
+  "bird" : null,
+
+
+  "practice" : false,
+};
 
 
 class observation extends StatefulWidget {
@@ -20,71 +35,159 @@ class observation extends StatefulWidget {
 }
 
 class _observationState extends State<observation> {
+  bool checkbox1 = false;
+  bool checkbox2 = false;
+  bool checkbox3 = false;
+  bool checkbox4 = false;
+  bool checkbox5 = false;
+  bool checkbox6 = false;
+  bool checkbox7 = false;
+  bool checkbox8 = false;
+  bool checkbox9 = false;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ElevatedButton(onPressed: () {_navigateToSeeBird(context);}, child: Text("I see a bird")),
-                ElevatedButton(onPressed: () {_navigateToObservation2(context);}, child: Text("I hear a bird")),
-                ElevatedButton(onPressed: () {_navigateToObservation2(context);}, child: Text("testing"))
-              ],
-            )
-
-        )
-    );
-  }
-
-  void _navigateToSeeBird(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => seebird()));
-  }
-
-  void _navigateToHearBird(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => hearbird()));
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Center(child: Text("Watch the bird for:")),
+        Countdown(
+            seconds: 30,
+            build: (_, double time) => Text(time.toInt().toString(),
+                style: const TextStyle(fontSize: 100))),
+        Center(child: Text("Check anything that the bird did")),
+        GridView.count(
+          shrinkWrap: true,
+          crossAxisCount: 3,
+          children: [
+            SelectableBox(
+                checkboxPadding: const EdgeInsets.all(0),
+                selectedIcon: const Icon(
+                  Icons.check_circle,
+                  color: Colors.green,
+                ),
+                unSelectedIcon: const Icon(
+                  Icons.remove_circle,
+                  color: Colors.red,
+                ),
+                onTap: () {
+                  setState(() {
+                    checkbox1 = !checkbox1;
+                  });
+                  observationData.update("flying", (value) => checkbox1);
+                },
+                isSelected: checkbox1,
+                child: Center(child: Text("Flying"))),
+            SelectableBox(
+                checkboxPadding: const EdgeInsets.all(0),
+                selectedIcon: const Icon(
+                  Icons.check_circle,
+                  color: Colors.green,
+                ),
+                unSelectedIcon: const Icon(
+                  Icons.remove_circle,
+                  color: Colors.red,
+                ),
+                onTap: () {
+                  setState(() {
+                    checkbox2 = !checkbox2;
+                  });
+                  observationData.update("ground", (value) => checkbox2);
+                },
+                isSelected: checkbox2,
+                child: Center(child: Text("On the ground"))),
+            SelectableBox(
+                checkboxPadding: const EdgeInsets.all(0),
+                selectedIcon: const Icon(
+                  Icons.check_circle,
+                  color: Colors.green,
+                ),
+                unSelectedIcon: const Icon(
+                  Icons.remove_circle,
+                  color: Colors.red,
+                ),
+                onTap: () {
+                  setState(() {
+                    checkbox3 = !checkbox3;
+                  });
+                  observationData.update("tree", (value) => checkbox3);
+                },
+                isSelected: checkbox3,
+                child: Center(child: Text("Sitting in a tree"))),
+            SelectableBox(
+                checkboxPadding: const EdgeInsets.all(0),
+                selectedIcon: const Icon(
+                  Icons.check_circle,
+                  color: Colors.green,
+                ),
+                unSelectedIcon: const Icon(
+                  Icons.remove_circle,
+                  color: Colors.red,
+                ),
+                onTap: () {
+                  setState(() {
+                    checkbox4 = !checkbox4;
+                  });
+                  observationData.update("singing", (value) => checkbox4);
+                },
+                isSelected: checkbox4,
+                child: Center(child: Text("Singing"))),
+            SelectableBox(
+                checkboxPadding: const EdgeInsets.all(0),
+                selectedIcon: const Icon(
+                  Icons.check_circle,
+                  color: Colors.green,
+                ),
+                unSelectedIcon: const Icon(
+                  Icons.remove_circle,
+                  color: Colors.red,
+                ),
+                onTap: () {
+                  setState(() {
+                    checkbox5 = !checkbox5;
+                  });
+                  observationData.update("eating", (value) => checkbox5);
+                },
+                isSelected: checkbox5,
+                child: Center(child: Text("Eating"))),
+            SelectableBox(
+                checkboxPadding: const EdgeInsets.all(0),
+                selectedIcon: const Icon(
+                  Icons.check_circle,
+                  color: Colors.green,
+                ),
+                unSelectedIcon: const Icon(
+                  Icons.remove_circle,
+                  color: Colors.red,
+                ),
+                onTap: () {
+                  setState(() {
+                    checkbox6 = !checkbox6;
+                  });
+                  observationData.update("sleeping", (value) => checkbox6);
+                },
+                isSelected: checkbox6,
+                child: Center(child: Text("Sleeping/In nest"))),
+          ],
+        ),
+        ElevatedButton(
+            onPressed: () {
+              _navigateToObservation2(context);
+            },
+            child: const Text("Continue"))
+      ],
+    )));
   }
 
   void _navigateToObservation2(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => observation2()));
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => observation2()));
   }
 }
-
-
-class seebird extends StatefulWidget {
-  const seebird({super.key});
-
-  @override
-  State<seebird> createState() => _seebirdState();
-}
-
-class _seebirdState extends State<seebird> {
-  @override
-  Widget build(BuildContext context) {
-    return Text("a");
-  }
-}
-
-class hearbird extends StatefulWidget {
-  const hearbird({super.key});
-
-  @override
-  State<hearbird> createState() => _hearbirdState();
-}
-
-class _hearbirdState extends State<hearbird> {
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
-
-
-
-
-
-
 
 class observation2 extends StatefulWidget {
   const observation2({super.key});
@@ -94,89 +197,45 @@ class observation2 extends StatefulWidget {
 }
 
 class _observation2State extends State<observation2> {
-  String dropdownValue1 = numberofbirds.first;
-  String dropdownValue2 = howbig.first;
-  String dropdownValue3 = whereisit.first;
-  String dropdownValue4 = species.first;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [Text("How many Birds do you see?(pick one to observe)"),
-            DropdownButton<String>(
-              value: dropdownValue1,
-              onChanged: (String? value) {
-                setState(() {
-                  dropdownValue1 = value!;
-                });
-              },
-              items: numberofbirds.map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            ),
-            SizedBox(height: 30,),
-            Text("How big is the bird"),
-            DropdownButton<String>(
-              value: dropdownValue2,
-              onChanged: (String? value) {
-                setState(() {
-                  dropdownValue2 = value!;
-                });
-              },
-              items: howbig.map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            ),
-            SizedBox(height: 30,),
-            Text("Where is the bird"),
-            DropdownButton<String>(
-              value: dropdownValue3,
-              onChanged: (String? value) {
-                setState(() {
-                  dropdownValue3 = value!;
-                });
-              },
-              items: whereisit.map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            ),
-            SizedBox(height: 30,),
-            Text("What kind of bird is it? (leave blank if unsure)"),
-            DropdownButton<String>(
-              value: dropdownValue4,
-              onChanged: (String? value) {
-                setState(() {
-                  dropdownValue4 = value!;
-                });
-              },
-              items: species.map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            ),
-            SizedBox(height: 30,),
-            ElevatedButton(onPressed: () {Navigator.pop(context);}, child: Text("Submit Observation"))
-          ],
-        ),
+      body: Column(
+        children: [GridView.builder(
+          shrinkWrap: true,
+          itemCount: birds.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, ),
+            itemBuilder: (BuildContext context, int index){
+              return Expanded(
+                  child:Card(
+                    child: InkResponse(
+                      child: Column(children: [Text(birds.elementAt(index).elementAt(0)),birds.elementAt(index).elementAt(1)])
+                ),
+              ));
+
+        }),
+          ElevatedButton(onPressed: () {submit(); Navigator.pop(context);}, child: Text("Submit Observation"))
+        ]
       ),
     );
   }
-  void submit(){
+
+  void submit() {
+    // db.collection("data").add(observationData);
+    if (kDebugMode) {
+      print(observationData);
+    }
     //TODO compile all data
   }
 }
+
+
+List birds = [
+  ["American Robin",Image.asset("lib/sources/photos/american-robin.jpg")],
+  ["American Robin",Image.asset("lib/sources/photos/american-robin.jpg")],
+  ["American Robin",Image.asset("lib/sources/photos/american-robin.jpg")],
+  ["American Robin",Image.asset("lib/sources/photos/american-robin.jpg")],
+  ["American Robin",Image.asset("lib/sources/photos/american-robin.jpg")],
+  ["American Robin",Image.asset("lib/sources/photos/american-robin.jpg")],
+  ["American Robin",Image.asset("lib/sources/photos/american-robin.jpg")],
+];
