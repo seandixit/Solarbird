@@ -36,6 +36,10 @@ dependencies:
   camera: ^0.9.4+19
   intl: ^0.17.0
   shared_preferences: ^2.0.8
+  selectable_box: ^1.0.8
+  timer_count_down: ^2.2.0
+  freezed: ^2.4.7
+  cloud_firestore: ^4.14.0
 
 
   # The following adds the Cupertino Icons font to your application.

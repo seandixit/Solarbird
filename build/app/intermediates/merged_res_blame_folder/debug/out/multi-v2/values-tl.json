@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.eclipse.app-mergeDebugResources-14:/values-tl/values-tl.xml",
+            "outputFile": "com.example.eclipse.app-mergeDebugResources-15:/values-tl/values-tl.xml",
             "map": [
                 {
                     "source": "C:\\Users\\postw\\.gradle\\caches\\transforms-3\\e255c6ce9910a673f2619b479a7d74a8\\transformed\\jetified-exoplayer-core-2.18.7\\res\\values-tl\\values-tl.xml",

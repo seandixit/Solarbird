@@ -54,7 +54,7 @@ class _LogTabState extends State<LogTab> {
           Padding(
             padding: const EdgeInsets.only(left: 16.0, right: 8.0, top: 8.0, bottom: 8.0),
             child: Text(
-              _emailId ?? '', // Replace with the user's email ID
+              _emailId ?? 'placeholder@gmail.com', // Replace with the user's email ID
               style: TextStyle(fontSize: 16),
             ),
           ),

@@ -433,7 +433,7 @@ function getall(elements) {
   }
 
 // instead of reading form, we populate obsvconst with our data
-function readform(lat, long, alt) {
+function readform(lat, long, alt, timeOffset) {
     var tmp;
 
     // Set observer's constants manually
@@ -482,7 +482,7 @@ function readform(lat, long, alt) {
     //obsvconst[3] = minutes;
     //obsvconst[3] = hours + obsvconst[3]/60.0;
     //obsvconst[3]= 1 * obsvconst[3];
-    obsvconst[3] = 0
+    obsvconst[3] = timeOffset
 
     // Get the observer's geocentric position
     tmp = Math.atan(0.99664719 * Math.tan(obsvconst[0]));
@@ -732,9 +732,9 @@ function getcoverage() {
   }
 
 // CALCULATE!
-function calculatefor(lat, long, alt, el) {
+function calculatefor(lat, long, alt, timeOffset, el) {
   returnList = []
-    readform(lat, long, alt) // sets obsvconst
+    readform(lat, long, alt, timeOffset) // sets obsvconst
     console.log(obsvconst)
     for (i = 0 ; i < el.length ; i+=28) {
       obsvconst[6] = i
@@ -833,8 +833,8 @@ function calculatefor(lat, long, alt, el) {
     SE2001();
   }
 
-  function recalculate(lat, long, alt) {
-    return SE2001(lat, long, alt)
+  function recalculate(lat, long, alt, timeOffset) {
+    return SE2001(lat, long, alt, timeOffset)
   }
 
 // IMPORTANT CUT --------------------------------------------------------------------------------------------------------------------------
@@ -843,8 +843,8 @@ function calculatefor(lat, long, alt, el) {
 //   "Five Millennium Canon of Solar Eclipses: -1999 to +3000",
 //      Fred Espenak and Jean Meeus, NASA/TP-2006-214141, October 2006
 //
-function SE2001(lat, long, alt) {
-    return calculatefor(lat, long, alt, new Array(
+function SE2001(lat, long, alt, timeOffset) {
+    return calculatefor(lat, long, alt, timeOffset, new Array(
   // 2024  4  8
   2460409.262840,  18.0,  -4.0,   4.0,    74.0,    74.0,
     -0.3182440,   0.5117116,  3.260e-05, -8.420e-06,
@@ -866,4 +866,4 @@ function SE2001(lat, long, alt) {
   //}
 
   
-  console.log(recalculate(44.966667, 93.25, 0));
+  //console.log(recalculate(44.966667, 93.25, 0));

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.eclipse.app-mergeDebugResources-14:/values-nb/values-nb.xml",
+            "outputFile": "com.example.eclipse.app-mergeDebugResources-15:/values-nb/values-nb.xml",
             "map": [
                 {
                     "source": "C:\\Users\\postw\\.gradle\\caches\\transforms-3\\781e5567158e59d38ee2b89930f9808b\\transformed\\jetified-play-services-base-18.1.0\\res\\values-nb\\values.xml",
