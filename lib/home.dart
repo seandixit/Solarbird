@@ -5,6 +5,7 @@ import 'package:geolocator/geolocator.dart' show Geolocator, LocationAccuracy, L
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_js/flutter_js.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:intl/intl.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({Key? key}) : super(key: key);
@@ -307,10 +308,14 @@ class _HomeTabState extends State<HomeTab> {
     }
   }
 
-  String extractTime(String pattern, String input) {
+  String extractInfo(String pattern, String input, bool timeBool) {
     RegExp regex = RegExp(pattern);
     var match = regex.firstMatch(input);
-    return match != null ? match.group(1) ?? "" : "N/A";
+    if (timeBool) {
+    return match != null ? convertTo12HourFormat(match.group(1).toString()) ?? "" : "N/A";
+    } else {
+    return match != null ? (double.parse(match.group(1)!) * 100).toString() + "%" ?? "" : "N/A";
+    }
   }
 
   String _printDuration(Duration duration) {
@@ -319,6 +324,18 @@ class _HomeTabState extends State<HomeTab> {
     String twoDigitMinutes = twoDigits(duration.inMinutes.remainder(60).abs());
     String twoDigitSeconds = twoDigits(duration.inSeconds.remainder(60).abs());
     return "$negativeSign${twoDigits(duration.inHours)}:$twoDigitMinutes:$twoDigitSeconds";
+  }
+
+  String convertTo12HourFormat(String time24Hour) {
+    // Parse the input time string
+    DateFormat inputFormat = DateFormat('HH:mm:ss');
+    DateTime time = inputFormat.parse(time24Hour);
+
+    // Format the time in 12-hour format
+    DateFormat outputFormat = DateFormat('h:mm a');
+    String time12Hour = outputFormat.format(time);
+
+    return time12Hour;
   }
 
   void setCircumTable( JavascriptRuntime jsRuntime) async {
@@ -337,21 +354,22 @@ class _HomeTabState extends State<HomeTab> {
       // Add '-' if not present
       strTime = "-" + strTime;
     }
-    print(_printDuration(timeZone));
-    print(strTime);
-    print("---------------------------------------------------------------------------^");
+
+    Duration offset = DateTime.now().timeZoneOffset;
+    int offsetInHours = offset.inHours * -1;
+
     final jsResult =
-    jsRuntime.evaluate(loadJs + """recalculate($doubleLat, $doubleLong, $doubleAltitude)""");
+    jsRuntime.evaluate(loadJs + """recalculate($doubleLat, $doubleLong, $doubleAltitude, $offsetInHours)""");
     final jsStringResult = jsResult.stringResult;
     print(jsStringResult);
 
     List<String> resultList = jsStringResult.split(' ');
     setState(() {
-      timeUntilEclipseBegins = extractTime(r'(\d+:\d+:\d+)ec_start', jsStringResult);
-      timeUntilTotalityBegins = extractTime(r'(\d+:\d+:\d+)tot_start', jsStringResult);
-      timeUntilMaxEclipse = extractTime(r'(\d+:\d+:\d+)max_ec', jsStringResult);
-      expectedObscuration = extractTime(r'(\d+\.\d+)mag', jsStringResult);
-      expectedMagnitude = extractTime(r'(\d+\.\d+)obsc', jsStringResult);
+      timeUntilEclipseBegins = extractInfo(r'(\d+:\d+:\d+)ec_start', jsStringResult, true);
+      timeUntilTotalityBegins = extractInfo(r'(\d+:\d+:\d+)tot_start', jsStringResult, true);
+      timeUntilMaxEclipse = extractInfo(r'(\d+:\d+:\d+)max_ec', jsStringResult, true);
+      expectedObscuration = extractInfo(r'(\d+\.\d+)mag', jsStringResult, false);
+      expectedMagnitude = extractInfo(r'(\d+\.\d+)obsc', jsStringResult, false);
 
       text_col = Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -377,11 +395,7 @@ class _HomeTabState extends State<HomeTab> {
             style: TextStyle(fontSize: 18),
           ),
           Text(
-            'Expected Obscuration: ${expectedObscuration}',
-            style: TextStyle(fontSize: 20),
-          ),
-          Text(
-            'Expected Magnitude: ${expectedMagnitude}',
+            'Max Coverage: ${expectedMagnitude}',
             style: TextStyle(fontSize: 20),
           ),
         ],

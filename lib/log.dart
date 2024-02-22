@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LogTab extends StatefulWidget {
   const LogTab({Key? key}) : super(key: key);
@@ -9,6 +10,24 @@ class LogTab extends StatefulWidget {
 }
 
 class _LogTabState extends State<LogTab> {
+  String? _emailId;
+  bool? _consent2;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+  }
+
+  // Function to load data from SharedPreferences
+  Future<void> _loadData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _emailId = prefs.getString('emailId') ?? ''; // Load email ID or default to empty string
+      _consent2 = prefs.getBool('consent2') ?? false; // Load consent2 or default to false
+    });
+  }
+
   List<String> observations = [
     'Observation 1',
     'Observation 2',
@@ -35,7 +54,7 @@ class _LogTabState extends State<LogTab> {
           Padding(
             padding: const EdgeInsets.only(left: 16.0, right: 8.0, top: 8.0, bottom: 8.0),
             child: Text(
-              'user@example.com', // Replace with the user's email ID
+              _emailId ?? '', // Replace with the user's email ID
               style: TextStyle(fontSize: 16),
             ),
           ),
