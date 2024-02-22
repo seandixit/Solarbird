@@ -433,7 +433,7 @@ function getall(elements) {
   }
 
 // instead of reading form, we populate obsvconst with our data
-function readform(lat, long, alt, timeZone) {
+function readform(lat, long, alt) {
     var tmp;
 
     // Set observer's constants manually
@@ -457,7 +457,7 @@ function readform(lat, long, alt, timeZone) {
     obsvconst[0]= obsvconst[0]*Math.PI/180.0
 
 
-    long_arr = ConvertDDToDMS(long, true);
+    //long_arr = ConvertDDToDMS(long, true);
     // Longitude
     //var lonDegrees = Math.abs(parseInt(long_arr[deg])) //86;
     //var lonMinutes = Math.abs(parseInt(long_arr[min]))//9;
@@ -472,16 +472,17 @@ function readform(lat, long, alt, timeZone) {
 
     // Time zone
     // Split the timeZone string by ':'
-    const parts = timeZone.split(':');
+    //const parts = timeZone.split(':');
 
     // Extract hours and minutes
-    const hours = parseInt(parts[0], 10); // Parse hours as integer
-    const minutes = parseInt(parts[1], 10); // Parse minutes as integer
+    //const hours = parseInt(parts[0], 10); // Parse hours as integer
+    //const minutes = parseInt(parts[1], 10); // Parse minutes as integer
 
     //var timeZoneHours = 5
-    obsvconst[3] = minutes;
-    obsvconst[3] = hours + obsvconst[3]/60.0;
+    //obsvconst[3] = minutes;
+    //obsvconst[3] = hours + obsvconst[3]/60.0;
     //obsvconst[3]= 1 * obsvconst[3];
+    obsvconst[3] = 0
 
     // Get the observer's geocentric position
     tmp = Math.atan(0.99664719 * Math.tan(obsvconst[0]));
@@ -731,9 +732,9 @@ function getcoverage() {
   }
 
 // CALCULATE!
-function calculatefor(lat, long, alt, timeZone, el) {
+function calculatefor(lat, long, alt, el) {
   returnList = []
-    readform(lat, long, alt, timeZone) // sets obsvconst
+    readform(lat, long, alt) // sets obsvconst
     console.log(obsvconst)
     for (i = 0 ; i < el.length ; i+=28) {
       obsvconst[6] = i
@@ -832,8 +833,8 @@ function calculatefor(lat, long, alt, timeZone, el) {
     SE2001();
   }
 
-  function recalculate(lat, long, alt, timeZone) {
-    return SE2001(lat, long, alt, timeZone)
+  function recalculate(lat, long, alt) {
+    return SE2001(lat, long, alt)
   }
 
 // IMPORTANT CUT --------------------------------------------------------------------------------------------------------------------------
@@ -842,8 +843,8 @@ function calculatefor(lat, long, alt, timeZone, el) {
 //   "Five Millennium Canon of Solar Eclipses: -1999 to +3000",
 //      Fred Espenak and Jean Meeus, NASA/TP-2006-214141, October 2006
 //
-function SE2001(lat, long, alt, timeZone) {
-    return calculatefor(lat, long, alt, timeZone, new Array(
+function SE2001(lat, long, alt) {
+    return calculatefor(lat, long, alt, new Array(
   // 2024  4  8
   2460409.262840,  18.0,  -4.0,   4.0,    74.0,    74.0,
     -0.3182440,   0.5117116,  3.260e-05, -8.420e-06,
@@ -855,13 +856,14 @@ function SE2001(lat, long, alt, timeZone) {
      0.0046683,   0.0046450,
   ));}
 
-  function ConvertDDToDMS(D, lng) {
-    return {
-      dir: D < 0 ? (lng ? "W" : "S") : lng ? "E" : "N",
-      deg: 0 | (D < 0 ? (D = -D) : D),
-      min: 0 | (((D += 1e-9) % 1) * 60),
-      sec: (0 | (((D * 60) % 1) * 6000)) / 100,
-    };
-  }
+  //function ConvertDDToDMS(D, lng) {
+  //  return {
+  //    dir: D < 0 ? (lng ? "W" : "S") : lng ? "E" : "N",
+  //    deg: 0 | (D < 0 ? (D = -D) : D),
+  //    min: 0 | (((D += 1e-9) % 1) * 60),
+  //    sec: (0 | (((D * 60) % 1) * 6000)) / 100,
+  //  };
+  //}
 
-  console.log(recalculate(44.966667, 93.25, 0, "05:00:00"));
+  
+  console.log(recalculate(44.966667, 93.25, 0));

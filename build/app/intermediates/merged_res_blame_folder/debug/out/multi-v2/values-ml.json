@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.eclipse.app-mergeDebugResources-24:/values-ml/values-ml.xml",
+            "outputFile": "com.example.eclipse.app-mergeDebugResources-14:/values-ml/values-ml.xml",
             "map": [
                 {
                     "source": "C:\\Users\\postw\\.gradle\\caches\\transforms-3\\e255c6ce9910a673f2619b479a7d74a8\\transformed\\jetified-exoplayer-core-2.18.7\\res\\values-ml\\values-ml.xml",
@@ -13,11 +13,11 @@
                         "endOffsets": "121,182,254,324,401,482,585,682,760"
                     },
                     "to": {
-                        "startLines": "27,28,29,30,31,32,33,34,35",
+                        "startLines": "20,21,22,23,24,25,26,27,28",
                         "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "3153,3224,3285,3357,3427,3504,3585,3688,3785",
+                        "startOffsets": "2416,2487,2548,2620,2690,2767,2848,2951,3048",
                         "endColumns": "70,60,71,69,76,80,102,96,77",
-                        "endOffsets": "3219,3280,3352,3422,3499,3580,3683,3780,3858"
+                        "endOffsets": "2482,2543,2615,2685,2762,2843,2946,3043,3121"
                     }
                 },
                 {
@@ -30,28 +30,11 @@
                         "endOffsets": "307,482,617,734,894,1015,1116,1218,1396,1508,1678,1810,1955,2112,2172,2237,2325"
                     },
                     "to": {
-                        "startLines": "9,10,11,12,13,14,15,16,18,19,20,21,22,23,24,25,26",
+                        "startLines": "2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "792,911,1090,1229,1350,1514,1639,1744,2010,2192,2308,2482,2618,2767,2928,2992,3061",
+                        "startOffsets": "55,174,353,492,613,777,902,1007,1273,1455,1571,1745,1881,2030,2191,2255,2324",
                         "endColumns": "118,178,138,120,163,124,104,105,181,115,173,135,148,160,63,68,91",
-                        "endOffsets": "906,1085,1224,1345,1509,1634,1739,1845,2187,2303,2477,2613,2762,2923,2987,3056,3148"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\postw\\.gradle\\caches\\transforms-3\\c4988ff80110f75080a936fc6f044848\\transformed\\core-1.10.1\\res\\values-ml\\values-ml.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,157,260,362,466,569,670,792",
-                        "endColumns": "101,102,101,103,102,100,121,100",
-                        "endOffsets": "152,255,357,461,564,665,787,888"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7,8,36",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,157,260,362,466,569,670,3863",
-                        "endColumns": "101,102,101,103,102,100,121,100",
-                        "endOffsets": "152,255,357,461,564,665,787,3959"
+                        "endOffsets": "169,348,487,608,772,897,1002,1108,1450,1566,1740,1876,2025,2186,2250,2319,2411"
                     }
                 },
                 {
@@ -64,11 +47,28 @@
                         "endOffsets": "350"
                     },
                     "to": {
-                        "startLines": "17",
+                        "startLines": "10",
                         "startColumns": "4",
-                        "startOffsets": "1850",
+                        "startOffsets": "1113",
                         "endColumns": "159",
-                        "endOffsets": "2005"
+                        "endOffsets": "1268"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\postw\\.gradle\\caches\\transforms-3\\c2aff38445ebad8ddeaa989ecf50f56e\\transformed\\core-1.9.0\\res\\values-ml\\values-ml.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "29",
+                        "startColumns": "4",
+                        "startOffsets": "3126",
+                        "endColumns": "100",
+                        "endOffsets": "3222"
                     }
                 }
             ]

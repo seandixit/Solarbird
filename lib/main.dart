@@ -4,6 +4,7 @@ import 'package:eclipse/aboutPages/terms.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_js/flutter_js.dart';
 
+import 'log.dart' as log;
 import 'observation.dart' as observation;
 import 'learning.dart' as learning;
 import 'observation.dart';
@@ -37,8 +38,9 @@ class _MyAppState extends State<MyApp> {
     new Center(child: new home.HomeTab()),
     new Center(child: new guide.GuideTab()),         // TODO: fyi I replaced LearningTab for this
     new Center(child: null), // TODO fix that you can click on this
-    new Center(child: new about.AboutTab()), // TODO: fyi I replaced ObserveTab for this
-    new Center(child: observation.observation())
+    new Center(child: new log.LogTab()),
+    new Center(child: new about.AboutTab()),
+    new Center(child: observation.observation()),
   ];
 
   @override

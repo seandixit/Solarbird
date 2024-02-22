@@ -64,8 +64,6 @@ attr useViewLifecycle
 attr zOrderOnTop
 color androidx_core_ripple_material_light
 color androidx_core_secondary_text_default_material_light
-color call_notification_answer_color
-color call_notification_decline_color
 color common_google_signin_btn_text_dark
 color common_google_signin_btn_text_dark_default
 color common_google_signin_btn_text_dark_disabled
@@ -122,12 +120,6 @@ drawable common_google_signin_btn_text_light_normal
 drawable common_google_signin_btn_text_light_normal_background
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
-drawable ic_call_answer
-drawable ic_call_answer_low
-drawable ic_call_answer_video
-drawable ic_call_answer_video_low
-drawable ic_call_decline
-drawable ic_call_decline_low
 drawable launch_background
 drawable notification_action_background
 drawable notification_bg
@@ -205,7 +197,6 @@ id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
-id report_drawn
 id right_icon
 id right_side
 id rtl
@@ -230,9 +221,6 @@ id text2
 id time
 id title
 id view_tree_lifecycle_owner
-id view_tree_on_back_pressed_dispatcher_owner
-id view_tree_saved_state_registry_owner
-id view_tree_view_model_store_owner
 id wide
 integer google_play_services_version
 integer status_bar_notification_info_maxnum
@@ -244,14 +232,6 @@ layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
 mipmap ic_launcher
-string androidx_startup
-string call_notification_answer_action
-string call_notification_answer_video_action
-string call_notification_decline_action
-string call_notification_hang_up_action
-string call_notification_incoming_text
-string call_notification_ongoing_text
-string call_notification_screening_text
 string common_google_play_services_enable_button
 string common_google_play_services_enable_text
 string common_google_play_services_enable_title
@@ -303,4 +283,3 @@ styleable SignInButton buttonSize colorScheme scopeUris
 styleable SplitPairFilter primaryActivityName secondaryActivityAction secondaryActivityName
 styleable SplitPairRule clearTop finishPrimaryWithSecondary finishSecondaryWithPrimary splitLayoutDirection splitMinSmallestWidth splitMinWidth splitRatio
 styleable SplitPlaceholderRule placeholderActivityName splitLayoutDirection splitMinSmallestWidth splitMinWidth splitRatio
-xml flutter_image_picker_file_paths

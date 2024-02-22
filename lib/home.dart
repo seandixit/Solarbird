@@ -12,7 +12,14 @@ class HomeTab extends StatefulWidget {
   @override
   State<HomeTab> createState() => _HomeTabState();
 }
-
+// TODO: where to put logo
+// TODO: Make function that returns current lat and long to database
+// TODO: make splash screen with 3 consent
+// TODO: step counter like notification
+// TODO: change to time until, current time based on location and 12-hour instead
+// TODO: max coverage (change obscuration into percent)
+// TODO: solar eclipse graphic
+// TODO: after making observation, after totality done, cant delete anymore
 class _HomeTabState extends State<HomeTab> {
 
   bool locationRetrieved = false;
