@@ -18,9 +18,11 @@ class HomeTab extends StatefulWidget {
 // TODO: make splash screen with 3 consent
 // TODO: step counter like notification
 // TODO: change to time until, current time based on location and 12-hour instead
-// TODO: max coverage (change obscuration into percent)
 // TODO: solar eclipse graphic
 // TODO: after making observation, after totality done, cant delete anymore
+// TODO: get location loading
+
+// TODO: Test by adding solar eclipse date as today
 class _HomeTabState extends State<HomeTab> {
 
   bool locationRetrieved = false;
@@ -61,7 +63,7 @@ class _HomeTabState extends State<HomeTab> {
   late String long;
   late String altitude;
 
-
+  bool loading = false;
 
   GoogleMap? map;
   late GoogleMapController mapController;
@@ -190,6 +192,7 @@ class _HomeTabState extends State<HomeTab> {
                   Center(
                     child: ElevatedButton(
                       onPressed: () {
+                        setState(() { loading = true; });
                         _getCurrentLocation().then((value) {
                           lat = '${value.latitude}';
                           long = '${value.longitude}';
@@ -199,10 +202,15 @@ class _HomeTabState extends State<HomeTab> {
                             locationMessage = 'Lat: $lat, Long: $long, Alt: $altitude';
                             getLocationInfo();
                             locationRetrieved = true;
+                            loading = false;
                             _setMap();
                           });
+
                           _liveLocation();
-                        });
+                        }).catchError((error) { setState(() {
+                          loading = false;
+                        });});
+
                       },
                       child: Text("Get Location"),
                     ),
@@ -210,6 +218,8 @@ class _HomeTabState extends State<HomeTab> {
                   SizedBox(height: 20),
                 ],
               ),
+            if (loading)
+              CircularProgressIndicator(), // Loading circle
           ],
         ),
       ),

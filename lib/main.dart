@@ -118,7 +118,7 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
               CheckboxListTile(
-                title: Text('By checking this box, you agree to sharing your observations to IU for research purposes only.'),
+                title: Text('By checking this box, you verify that you are currently located in North America.'),
                 value: temp_consent1,
                 onChanged: (value) {
                   setState(() {
