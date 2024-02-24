@@ -23,6 +23,8 @@ class HomeTab extends StatefulWidget {
 // TODO: get location loading
 
 // TODO: Test by adding solar eclipse date as today
+
+// TODO: make location work for when approx, test locations
 class _HomeTabState extends State<HomeTab> {
 
   bool locationRetrieved = false;
@@ -324,7 +326,7 @@ class _HomeTabState extends State<HomeTab> {
     if (timeBool) {
     return match != null ? convertTo12HourFormat(match.group(1).toString()) ?? "" : "N/A";
     } else {
-    return match != null ? (double.parse(match.group(1)!) * 100).toString() + "%" ?? "" : "N/A";
+    return match != null ? double.parse((double.parse(match.group(1)!) * 100).toStringAsFixed(2)).toString() + "%" ?? "" : "N/A";
     }
   }
 

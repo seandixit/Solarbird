@@ -33,16 +33,18 @@ class MyApp extends StatefulWidget {
 
 // TODO: if consent1 not signed, keep showing
 // TODO: check if valid email id
+// TODO: if outside america, dont care about getting top 10
+// TODO: bolden "Max Coverage:..."
 class _MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
   late SharedPreferences _prefs;
   String? _emailId;
-  bool? _consent1;
-  bool? _consent2;
+  String? _name;
+  bool? _NA_verification;
 
   String? temp_emailid;
-  bool temp_consent1 = false;
-  bool temp_consent2 = false;
+  String? temp_name;
+  bool temp_NA_verification = false;
   @override
   void initState() {
     super.initState();
@@ -54,18 +56,18 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       // Initialize variables with data from SharedPreferences or default values
       _emailId = _prefs.getString('emailid') ?? '';
-      _consent1 = _prefs.getBool('consent1') ?? false;
-      _consent2 = _prefs.getBool('consent2') ?? false;
+      _name = _prefs.getString('name') ?? '';
+      _NA_verification = _prefs.getBool('NA_verification') ?? false;
     });
   }
   // Function to save data to SharedPreferences
   Future<void> _saveData() async {
     _emailId = temp_emailid;
-    _consent1 = temp_consent1;
-    _consent2 = temp_consent2;
-    await _prefs.setString('emailid', _emailId!);
-    await _prefs.setBool('consent1', _consent1!);
-    await _prefs.setBool('consent2', _consent2!);
+    _name = temp_name;
+    _NA_verification = temp_NA_verification;
+    _prefs.setString('emailid', _emailId ?? "");
+    _prefs.setString('name', _name ?? "");
+    _prefs.setBool('NA_verification', _NA_verification!);
   }
 
   PageController controller=PageController(
@@ -84,68 +86,140 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     double bottomNavigationBarHeight = MediaQuery.of(context).size.height * 0.1;
 
-    if (_emailId?.isEmpty ?? true) { // return consent/emailid screen
+
+    if (_NA_verification != null && !_NA_verification!) { // return consent/emailid screen
       return MaterialApp(
-          home: Scaffold(
-        appBar: AppBar(
-          title: Text('Consent Screen'),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Text(
-                  'Please provide your email and consent',
-                  style: TextStyle(fontSize: 18.0),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Container(
-                  width: MediaQuery.of(context).size.width - 40.0, // Adjust width here
-                  child: TextField(
-                    onChanged: (value) {
-                      setState(() {
-                        temp_emailid = value;
-                      });
-                    },
-                    decoration: const InputDecoration(
-                      labelText: 'Email',
+        home: Scaffold(
+          appBar: AppBar(
+            title: Text(''),
+          ),
+          body: Builder( // Use Builder widget to get a context within the MaterialApp
+            builder: (BuildContext context) {
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 0),
+                      child: Text(
+                        'Insert email address here if you would like to be notified of the research results',
+                        style: TextStyle(fontSize: 16.0),
+                      ),
                     ),
-                  ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Container(
+                        height: 50.0,
+                        width: MediaQuery.of(context).size.width - 40.0, // Adjust width here
+                        child: TextField(
+                          onChanged: (value) {
+                            setState(() {
+                              temp_emailid = value;
+                            });
+                          },
+                          decoration: const InputDecoration(
+                            labelText: 'Email',
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 0),
+                      child: Text(
+                        'Insert your first and last name if you would like to be acknowledged in the expected scientific publication',
+                        style: TextStyle(fontSize: 16.0),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Container(
+                        height: 50.0,
+                        child: TextField(
+                          onChanged: (value) {
+                            setState(() {
+                              temp_name = value;
+                            });
+                          },
+                          decoration: const InputDecoration(
+                            labelText: 'First and Last Name',
+                          ),
+                        ),
+                      ),
+                    ),
+                    CheckboxListTile(
+                      contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 10.0),
+                      title: RichText(
+                        text: TextSpan(
+                          text: 'By checking this box, you verify that you are currently located in North America',
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            color: Colors.black, // Color for the text without the asterisk
+                          ),
+                          children: [
+                            TextSpan(
+                              text: ' *',
+                              style: TextStyle(
+                                color: Colors.red, // Color for the asterisk
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      value: temp_NA_verification,
+                      onChanged: (value) {
+                        setState(() {
+                          temp_NA_verification = value!;
+                        });
+                      },
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(0),
+                      child: Container(
+                        width: double.infinity, // Width spans the whole screen
+                        height: 50,
+                        child: ElevatedButton(
+                          onPressed: () async {
+                            if (!temp_NA_verification) {
+                              // If not from North America, show dialog
+                              showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                  title: Text("Alert"),
+                                  content: Text("Must be from North America to continue"),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop(); // Close the dialog
+                                      },
+                                      child: Text("OK"),
+                                    ),
+                                  ],
+                                ),
+
+                              );
+                            } else {
+                              await _saveData(); // Save data to SharedPreferences
+                              setState(() {}); // Rebuild UI
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(0.0), // Rectangular shape
+                            ),
+                          ),
+                          child: Text('Submit'),
+                        ),
+                      ),)
+                  ],
                 ),
-              ),
-              CheckboxListTile(
-                title: Text('By checking this box, you verify that you are currently located in North America.'),
-                value: temp_consent1,
-                onChanged: (value) {
-                  setState(() {
-                    temp_consent1 = value!;
-                  });
-                },
-              ),
-              CheckboxListTile(
-                title: Text('By checking this box, you agree to being sent updates on research carried out involving your observations.'),
-                value: temp_consent2,
-                onChanged: (value) {
-                  setState(() {
-                    temp_consent2 = value!;
-                  });
-                },
-              ),
-              ElevatedButton(
-                onPressed: () async {
-                  await _saveData(); // Save data to SharedPreferences
-                  setState(() {}); // Rebuild UI
-                },
-                child: Text('Submit'),
-              ),
-            ],
+              );
+            },
           ),
         ),
-      ));
+      );
+
+
+
     }
     else{
     return MaterialApp(
