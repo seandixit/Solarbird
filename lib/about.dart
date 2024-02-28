@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'aboutPages/project.dart';
 
 class AboutTab extends StatefulWidget {
   const AboutTab({Key? key}) : super(key: key);
@@ -57,7 +56,7 @@ class _AboutTabState extends State<AboutTab> {
               },
             ),
             ListTile(
-              title: Text('Terms and Conditions'),
+              title: Text('Acknowledgement'),
               onTap: () {
                 Navigator.pushNamed(context, '/termspage');
                 // Add action for Terms and Conditions

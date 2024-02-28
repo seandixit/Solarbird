@@ -21,29 +21,32 @@ class _GuideTabState extends State<GuideTab> {
           mainAxisAlignment: MainAxisAlignment.start, // Align buttons to start from the top
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            SizedBox(height: 20),
+        RoundedButton(
+          icon: CupertinoIcons.book_fill,
+          title: 'Bird Bootcamp',
+          subtitle: 'Learn about birds and how to observe \nthem',
+          onPressed: () {
+            Navigator.pushNamed(context, '/birdpage');// Add action for Bird Bootcamp button
+          },),
+            SizedBox(height: 20),
             RoundedButton(
-              icon: CupertinoIcons.flowchart,
+              icon: CupertinoIcons.flowchart_fill,
               title: 'Step-by-Step',
-              subtitle: 'Learn how to make submission',
+              subtitle: 'Instructions for submitting an observation',
               onPressed: () {
                 // Add action for Step-by-Step button
+                Navigator.pushNamed(context, '/steppage');
               },
+
             ),
             SizedBox(height: 20),
             RoundedButton(
-              icon: CupertinoIcons.book_fill,
-              title: 'Bird Bootcamp',
-              subtitle: 'Learn birds!',
+              icon: CupertinoIcons.camera_fill,
+              title: 'Practice Submission',
+              subtitle: 'Try it out before the big day!',
               onPressed: () {
-                // Add action for Bird Bootcamp button
-              },
-            ),
-            SizedBox(height: 20),
-            RoundedButton(
-              icon: CupertinoIcons.list_bullet,
-              title: 'List of Birds',
-              subtitle: 'Learn about the birds around you',
-              onPressed: () {
+                Navigator.pushNamed(context, '/practicepage');
                 // Add action for Bird Bootcamp button
               },
             ),

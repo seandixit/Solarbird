@@ -1,6 +1,9 @@
 import 'package:eclipse/aboutPages/language.dart';
 import 'package:eclipse/aboutPages/privacy.dart';
 import 'package:eclipse/aboutPages/terms.dart';
+import 'package:eclipse/guidePages/bird.dart';
+import 'package:eclipse/guidePages/practice.dart';
+import 'package:eclipse/guidePages/step.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_js/flutter_js.dart';
 
@@ -75,7 +78,7 @@ class _MyAppState extends State<MyApp> {
   );
   List<Widget> _list = <Widget>[
     new Center(child: new home.HomeTab()),
-    new Center(child: new guide.GuideTab()),         // TODO: fyi I replaced LearningTab for this
+    new Center(child: new guide.GuideTab()),
     new Center(child: null),
     new Center(child: new log.LogTab()),
     new Center(child: new about.AboutTab()),
@@ -90,6 +93,7 @@ class _MyAppState extends State<MyApp> {
     if (_NA_verification != null && !_NA_verification!) { // return consent/emailid screen
       return MaterialApp(
         home: Scaffold(
+          resizeToAvoidBottomInset: false,
           appBar: AppBar(
             title: Text(''),
           ),
@@ -99,6 +103,7 @@ class _MyAppState extends State<MyApp> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    Image(image: AssetImage('lib/sources/mainlogo.png'), height: 330, width: 330),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 0),
                       child: Text(
@@ -229,6 +234,9 @@ class _MyAppState extends State<MyApp> {
         '/languagepage': (context) => const LanguagePage(),
         '/privacypage': (context) => const PrivacyPage(),
         '/termspage': (context) => const TermsPage(),
+        '/birdpage': (context) => const BirdPage(),
+        '/steppage': (context) => const StepPage(),
+        '/practicepage': (context) => const PracticeStep(),
 
       },
       home: Scaffold(
@@ -243,7 +251,7 @@ class _MyAppState extends State<MyApp> {
           backgroundColor: Colors.yellow,
           onPressed: () {controller.jumpToPage(5);}, // TODO: "MAKE AN OBSERVATION"
           shape: const CircleBorder(),
-          child: const Icon(Icons.camera_alt, color: Colors.black,),
+          child: const Icon(Icons.camera_alt_rounded, color: Colors.black,),
         ),
 
         bottomNavigationBar: SizedBox(

@@ -22,8 +22,10 @@ class HomeTab extends StatefulWidget {
 // TODO: after making observation, after totality done, cant delete anymore
 // TODO: get location loading
 
+// TODO: Swiping gets user to empty screen (center)
 // TODO: Test by adding solar eclipse date as today
 
+// TODO: update app logo/icon
 // TODO: make location work for when approx, test locations
 class _HomeTabState extends State<HomeTab> {
 

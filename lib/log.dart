@@ -12,6 +12,7 @@ class LogTab extends StatefulWidget {
 class _LogTabState extends State<LogTab> {
   String? _emailId;
   bool? _consent2;
+  String? _name;
 
   @override
   void initState() {
@@ -23,9 +24,11 @@ class _LogTabState extends State<LogTab> {
   Future<void> _loadData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      _emailId = prefs.getString('emailId') ?? ''; // Load email ID or default to empty string
-      _consent2 = prefs.getBool('consent2') ?? false; // Load consent2 or default to false
+      _emailId = prefs.getString('emailid') ?? 'Email ID not provided'; // Load email ID or default to empty string
+      _name = prefs.getString('name',) ?? "Name not Provided";
     });
+
+    print(_emailId);
   }
 
   List<String> observations = [
@@ -47,14 +50,21 @@ class _LogTabState extends State<LogTab> {
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text(
-              'User\'s Email ID',
+              'User Info',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 16.0, right: 8.0, top: 8.0, bottom: 8.0),
             child: Text(
-              _emailId ?? 'placeholder@gmail.com', // Replace with the user's email ID
+              _emailId ?? "Email ID not provided", // Replace with the user's email ID
+              style: TextStyle(fontSize: 16),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 16.0, right: 8.0, top: 8.0, bottom: 8.0),
+            child: Text(
+              _name ?? "Name not Provided", // Replace with the user's email ID
               style: TextStyle(fontSize: 16),
             ),
           ),
@@ -71,15 +81,8 @@ class _LogTabState extends State<LogTab> {
               itemBuilder: (BuildContext context, int index) {
                 final observation = observations[index];
                 return ListTile(
-                  title: Text(observation),
-                  trailing: IconButton(
-                    icon: Icon(Icons.delete),
-                    onPressed: () {
-                      setState(() {
-                        observations.removeAt(index);
-                      });
-                    },
-                  ),
+                  title: Text(observation), // TODO: If there are no observations, show button
+
                   onTap: () {
                     // Handle the click on the observation item
                   },

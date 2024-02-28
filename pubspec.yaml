@@ -74,6 +74,9 @@ flutter:
   assets:
     - lib/sources/bird_shapes.jpg
     - lib/sources/eclipse_explorer_flut.jsx
+    - lib/sources/insgclogo.png
+    - lib/sources/nsflogo.png
+    - lib/sources/mainlogo.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
