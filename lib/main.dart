@@ -34,10 +34,10 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-// TODO: if consent1 not signed, keep showing
 // TODO: check if valid email id
 // TODO: if outside america, dont care about getting top 10
 // TODO: bolden "Max Coverage:..."
+// TODO: make sure it works for different screen sizes
 class _MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
   late SharedPreferences _prefs;
@@ -122,6 +122,9 @@ class _MyAppState extends State<MyApp> {
                               temp_emailid = value;
                             });
                           },
+                          style: TextStyle(
+                            fontSize: 13.0, // Adjust the font size here
+                          ),
                           decoration: const InputDecoration(
                             labelText: 'Email',
                           ),
@@ -145,6 +148,9 @@ class _MyAppState extends State<MyApp> {
                               temp_name = value;
                             });
                           },
+                          style: TextStyle(
+                            fontSize: 13.0, // Adjust the font size here
+                          ),
                           decoration: const InputDecoration(
                             labelText: 'First and Last Name',
                           ),
