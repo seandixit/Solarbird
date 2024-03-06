@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class TermsPage extends StatelessWidget{
   const TermsPage({super.key});
 
+  // TODO: ludy logo on top/bottom
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,15 +12,15 @@ class TermsPage extends StatelessWidget{
         padding: EdgeInsets.fromLTRB(15.0, 0, 15.0, 15.0),
         children: const [
           AcknowledgmentItem(
-            title: 'College of Arts & Sciences',
-          ),
-          AcknowledgmentItem(
-            title: 'Luddy School of Informatics, Computing, and Engineering',
-          ),
-          AcknowledgmentItem(
-            title: 'Funding',
+            title: 'Funding and Support',
             description:
-            'Indiana Space Grant Consortium (INSGC)\nNational Science Foundation (NSF)',
+            'Indiana Space Grant Consortium (INSGC)\nNational Science Foundation (NSF)\nCollege of Arts & Sciences\nLuddy School of Informatics, Computing, and Engineering',
+          ),
+          AcknowledgmentItem(
+            title: 'Privacy and Disclosures',
+          ),
+          AcknowledgmentItem(
+            title: 'Rosvall Lab',
           ),
           AcknowledgmentItem(
             title: 'Land Acknowledgement',
@@ -27,21 +28,21 @@ class TermsPage extends StatelessWidget{
             'Indigenous Name: “We wish to acknowledge and honor the Indigenous communities native to this region, and recognize that Indiana University Bloomington is built on Indigenous homelands and resources. We recognize the myaamiaki, Lënape, Bodwéwadmik, and saawanwa people as past, present, and future caretakers of this land.”\nAnglicized Form: “We wish to acknowledge and honor the Indigenous communities native to this region, and recognize that Indiana University Bloomington is built on Indigenous homelands and resources. We recognize the Miami, Delaware, Potawatomi, and Shawnee people as past, present, and future caretakers of this land.”',
           ),
           AcknowledgmentItem(
-            title: 'IU Legal',
+            title: 'Other thank yous',
+            description:
+            'We thank Catherine... for insightful...'
           ),
-          AcknowledgmentItem(
-            title: 'Rosvall Lab',
-          ),
-          AcknowledgmentItem(
-            title: 'Astronomy, Caty Pilachowski',
-          ),
+
+
           Padding(
             padding: EdgeInsets.all(8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Image(image: AssetImage('lib/sources/insgclogo.png'), height: 100),
-                Image(image: AssetImage('lib/sources/nsflogo.png'), height: 100),
+                Image(image: AssetImage('lib/sources/insgclogo.png'), height: 65),
+                Image(image: AssetImage('lib/sources/nsflogo.png'), height: 80),
+                Image(image: AssetImage('lib/sources/luddylogo.png'), height: 65),
+                Image(image: AssetImage('lib/sources/iulogo.jpg'), height: 65),
               ],
             ),
           ),

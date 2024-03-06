@@ -38,49 +38,40 @@ class BirdPage extends StatelessWidget{
                   border: TableBorder.all(),
                   children: [
                     TableRow(children: [
-                      TableCell(child: Center(child: Text("ETHOGRAM", style: TextStyle(fontWeight: FontWeight.bold)))),
                       TableCell(child: Center(child: Text("Behavior", style: TextStyle(fontWeight: FontWeight.bold)))),
                       TableCell(child: Center(child: Text("Definition", style: TextStyle(fontWeight: FontWeight.bold)))),
                     ]),
                     TableRow(children: [
                       TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text("Flying"))),
                       TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text("Soaring in the sky; Moving through the air"))),
-                      TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text(""))),
                     ]),
                     TableRow(children: [
                       TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text("Swimming"))),
                       TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text("Moving along a body of water"))),
-                      TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text(""))),
                     ]),
                     TableRow(children: [
                       TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text("Singing / Calling"))),
                       TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text("Vocalizing; Making sound"))),
-                      TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text(""))),
                     ]),
                     TableRow(children: [
                       TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text("Walking"))),
                       TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text("Moving along the ground"))),
-                      TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text(""))),
                     ]),
                     TableRow(children: [
                       TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text("Sitting"))),
                       TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text("Stationary on an object or structure (wire, fence, roof)"))),
-                      TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text(""))),
                     ]),
                     TableRow(children: [
                       TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text("Eating"))),
                       TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text("Taking food from a bird feeder or foraging on the ground"))),
-                      TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text(""))),
                     ]),
                     TableRow(children: [
                       TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text("Perched (alone)"))),
                       TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text("Stationary in a tree or bush by itself"))),
-                      TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text(""))),
                     ]),
                     TableRow(children: [
                       TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text("Perched (with other birds)"))),
                       TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text("Stationary in a tree or bush with at least 1 other bird"))),
-                      TableCell(child: Padding(padding: EdgeInsets.all(8.0), child: Text(""))),
                     ]),
 
                   ],

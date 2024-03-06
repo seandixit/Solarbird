@@ -14,6 +14,8 @@ class _AboutTabState extends State<AboutTab> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      darkTheme: ThemeData.dark(useMaterial3: true),
+      theme: ThemeData.dark(),
       home: Scaffold(
         appBar: AppBar(
           title: Text('About'),

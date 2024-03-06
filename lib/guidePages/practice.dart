@@ -31,6 +31,9 @@ class PracticeStep extends StatelessWidget{
                   onPressed: () {
 // Add your onPressed logic here
                   },
+                  style: ButtonStyle(
+                    foregroundColor: MaterialStateProperty.all<Color>(Color(0xFFF69A06)),
+                  ),
                   child: Text('Practice Submission'),
                 ),
               ),

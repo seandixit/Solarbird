@@ -32,6 +32,7 @@ class FeedbackPage extends StatelessWidget{
                 // For example, you can get the feedback text using a TextEditingController
               },
               style: ElevatedButton.styleFrom(
+                foregroundColor: Color(0xFFF69A06),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0), // Adjust the value as needed
                 ),
@@ -39,6 +40,15 @@ class FeedbackPage extends StatelessWidget{
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 5.0),
                 child: Text('Submit', style: TextStyle(fontSize: 16.0)),
+              ),
+            ),
+            SizedBox(height: 10.0),
+            Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.only(bottom: 10.0),
+              child: Text(
+                'Contact info: sedixit@iu.edu',
+                style: TextStyle(color: Colors.grey),
               ),
             ),
           ],

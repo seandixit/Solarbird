@@ -24,8 +24,9 @@ class _LogTabState extends State<LogTab> {
   Future<void> _loadData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      _emailId = prefs.getString('emailid') ?? 'Email ID not provided'; // Load email ID or default to empty string
-      _name = prefs.getString('name',) ?? "Name not Provided";
+      _emailId = (prefs.getString('emailid') ?? '').isEmpty ? 'Email ID not provided' : prefs.getString('emailid');
+      _name = (prefs.getString('name') ?? '').isEmpty ? 'Name not Provided' : prefs.getString('name');
+
     });
 
     print(_emailId);
@@ -43,6 +44,13 @@ class _LogTabState extends State<LogTab> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Log'),
+        bottom: PreferredSize(
+          child: Divider(
+            color: Colors.grey,
+            height: 1,
+          ),
+          preferredSize: Size.fromHeight(1),
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

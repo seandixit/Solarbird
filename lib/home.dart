@@ -1,3 +1,4 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
@@ -36,6 +37,29 @@ class _HomeTabState extends State<HomeTab> {
     super.initState();
     _checkLocationPermission();
   }
+
+
+  Future<void> showScheduledNotification(int id, String channelKey,
+      String title, String body, DateTime interval) async {
+    String localTZ = await AwesomeNotifications().getLocalTimeZoneIdentifier();
+
+    await AwesomeNotifications().createNotification(
+      content: NotificationContent(
+        id: id,
+        channelKey: channelKey,
+        title: title,
+        body: body,
+        locked: true,
+        criticalAlert: true,
+        category: NotificationCategory.Alarm,
+
+      ),
+      schedule: NotificationCalendar.fromDate(date: interval),
+      actionButtons: <NotificationActionButton>[
+        NotificationActionButton(key: 'remove', label: 'Stop'),
+
+      ],
+    );}
 
   void _checkLocationPermission() async {
     LocationPermission permission = await Geolocator.checkPermission();
@@ -85,38 +109,32 @@ class _HomeTabState extends State<HomeTab> {
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Text(
-        'Time when:',
-        style: TextStyle(fontSize: 20),
-      ),
-      Text(
         'Eclipse begins: ${timeUntilEclipseBegins}',
-        style: TextStyle(fontSize: 18),
+        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
       ),
       Text(
         'Totality begins: ${timeUntilTotalityBegins}',
-        style: TextStyle(fontSize: 18),
+        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
       ),
       Text(
         'Max Eclipse: ${timeUntilMaxEclipse}',
-        style: TextStyle(fontSize: 18),
+        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
       ),
       Text(
         '',
         style: TextStyle(fontSize: 18),
       ),
       Text(
-        'Expected Obscuration: ${expectedObscuration}',
-        style: TextStyle(fontSize: 20),
-      ),
-      Text(
-        'Expected Magnitude: ${expectedMagnitude}',
-        style: TextStyle(fontSize: 20),
+        'Max Coverage: ${expectedMagnitude}',
+        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
       ),
     ],
   );
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      darkTheme: ThemeData.dark(useMaterial3: true),
+      theme: ThemeData.dark(),
       home: Scaffold(
         appBar: AppBar(
           title: Row(
@@ -168,15 +186,49 @@ class _HomeTabState extends State<HomeTab> {
                       height: MediaQuery.of(context).size.height * 0.4,
                       child: map,
                     ),
-                    SizedBox(height: 40), // Add some spacing
+                    SizedBox(height: 20), // Add some spacing
+
+                  Container(
+                  width: double.infinity,
+                    child:
+                    Stack(
+
+                      alignment: Alignment.center,
+                      children: [
+                        Container(
+                          width: 65, // Adjust the size as needed
+                          height: 65, // Adjust the size as needed
+                          decoration: BoxDecoration(
+                            color: Color(0xFFF69A06), // Desired color
+                            shape: BoxShape.circle,
+                          ),
+                        ),
+
+                        // IF MOON OVERLAPPING STAR,
+                        // MAKE THE COLOR OF MOON DARKER
+                        Positioned(
+                          left: 171.5, // Adjust the left position as needed
+                          child: Container(
+                            width: 50, // Adjust the size as needed
+                            height: 50, // Adjust the size as needed
+                            decoration: BoxDecoration(
+                              color: Color(0xFF000000), // White color
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),),
+
+                SizedBox(height: 20),
 
                     // Text section for time until different eclipse events
                     Container(
                       width: MediaQuery.of(context).size.width * 0.9,
                       padding: EdgeInsets.all(10), // Add padding for better appearance
                       decoration: BoxDecoration(
+                        color: Color(0xFF25232A),
                         borderRadius: BorderRadius.circular(10), // Set border radius for rounded edges
-                        border: Border.all(width: 2, color: Colors.black), // Set border properties
                       ),
                       child: text_col,
                     ),
@@ -216,6 +268,10 @@ class _HomeTabState extends State<HomeTab> {
                         });});
 
                       },
+                      style: ElevatedButton.styleFrom(
+                          foregroundColor: Color(0xFFF69A06), // Set the foreground color (text color) of the button
+                      ),
+
                       child: Text("Get Location"),
                     ),
                   ),
@@ -223,7 +279,9 @@ class _HomeTabState extends State<HomeTab> {
                 ],
               ),
             if (loading)
-              CircularProgressIndicator(), // Loading circle
+              CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFF69A06)), // Change the color here
+              ), // Loading circle
           ],
         ),
       ),
@@ -274,7 +332,184 @@ class _HomeTabState extends State<HomeTab> {
 
   void _onMapCreated(GoogleMapController controller) {
     setState(() {
-      mapController = controller;
+      mapController = controller.setMapStyle('''[
+  {
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#212121"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#757575"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#212121"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#757575"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.country",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#9e9e9e"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.locality",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#bdbdbd"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#757575"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#181818"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#616161"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#1b1b1b"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#2c2c2c"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#8a8a8a"
+      }
+    ]
+  },
+  {
+    "featureType": "road.arterial",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#373737"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#3c3c3c"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway.controlled_access",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#4e4e4e"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#616161"
+      }
+    ]
+  },
+  {
+    "featureType": "transit",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#757575"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#000000"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#3d3d3d"
+      }
+    ]
+  }
+]''') as GoogleMapController;
     });
   }
 
@@ -377,6 +612,18 @@ class _HomeTabState extends State<HomeTab> {
     final jsStringResult = jsResult.stringResult;
     print(jsStringResult);
 
+    AwesomeNotifications().createNotification(
+      content: NotificationContent(
+        id: 10,
+        channelKey: 'basic_channel',
+        title: "1 hour until Total Solar Eclipse Begins",
+        body: 'Totality begins at 12:20PM',
+      ),
+       // Schedules the notification to trigger 10 seconds after the current time
+    );
+
+
+
     List<String> resultList = jsStringResult.split(' ');
     setState(() {
       timeUntilEclipseBegins = extractInfo(r'(\d+:\d+:\d+)ec_start', jsStringResult, true);
@@ -389,20 +636,16 @@ class _HomeTabState extends State<HomeTab> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Time when:',
-            style: TextStyle(fontSize: 20),
-          ),
-          Text(
             'Eclipse begins: ${timeUntilEclipseBegins}',
-            style: TextStyle(fontSize: 18),
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           Text(
             'Totality begins: ${timeUntilTotalityBegins}',
-            style: TextStyle(fontSize: 18),
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           Text(
             'Max Eclipse: ${timeUntilMaxEclipse}',
-            style: TextStyle(fontSize: 18),
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           Text(
             '',
@@ -410,7 +653,7 @@ class _HomeTabState extends State<HomeTab> {
           ),
           Text(
             'Max Coverage: ${expectedMagnitude}',
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
         ],
       );

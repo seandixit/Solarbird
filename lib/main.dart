@@ -1,3 +1,4 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:eclipse/aboutPages/language.dart';
 import 'package:eclipse/aboutPages/privacy.dart';
 import 'package:eclipse/aboutPages/terms.dart';
@@ -24,6 +25,17 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
+  AwesomeNotifications().initialize(
+    null,
+    [
+      NotificationChannel(
+        channelKey: 'basic_channel',
+        channelName: 'Basic Notifications',
+        channelDescription: 'Notif channel for basic tests',
+      ),
+    ],
+    debug: true,
+  );
   runApp(const MyApp());
 }
 
@@ -34,6 +46,7 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
+// TODO: Funding and support, put colleges under
 // TODO: check if valid email id
 // TODO: if outside america, dont care about getting top 10
 // TODO: bolden "Max Coverage:..."
@@ -50,9 +63,16 @@ class _MyAppState extends State<MyApp> {
   bool temp_NA_verification = false;
   @override
   void initState() {
+    AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
+      if (!isAllowed){
+        AwesomeNotifications().requestPermissionToSendNotifications();
+      }
+    });
+
     super.initState();
     _loadData();
   }
+
   // Function to load data from SharedPreferences
   Future<void> _loadData() async {
     _prefs = await SharedPreferences.getInstance();
@@ -87,11 +107,17 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    double bottomNavigationBarHeight = MediaQuery.of(context).size.height * 0.1;
+    double bottomNavigationBarHeight = MediaQuery.of(context).size.height * 0.08;
 
 
     if (_NA_verification != null && !_NA_verification!) { // return consent/emailid screen
       return MaterialApp(
+        theme: ThemeData.dark().copyWith(
+          scaffoldBackgroundColor: Color(0xFF1E1B22),
+        ),
+        darkTheme: ThemeData.dark(useMaterial3: true).copyWith(
+          scaffoldBackgroundColor: Color(0xFF1E1B22),
+        ),
         home: Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
@@ -103,7 +129,7 @@ class _MyAppState extends State<MyApp> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Image(image: AssetImage('lib/sources/mainlogo.png'), height: 330, width: 330),
+                    Image(image: AssetImage('lib/sources/unlabelled_logo.jpg'), height: 330, width: 330),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 0),
                       child: Text(
@@ -153,6 +179,7 @@ class _MyAppState extends State<MyApp> {
                           ),
                           decoration: const InputDecoration(
                             labelText: 'First and Last Name',
+                            focusColor: Color(0xFFF69A06),
                           ),
                         ),
                       ),
@@ -164,7 +191,7 @@ class _MyAppState extends State<MyApp> {
                           text: 'By checking this box, you verify that you are currently located in North America',
                           style: TextStyle(
                             fontSize: 16.0,
-                            color: Colors.black, // Color for the text without the asterisk
+                            color: Colors.white, // Color for the text without the asterisk
                           ),
                           children: [
                             TextSpan(
@@ -176,6 +203,7 @@ class _MyAppState extends State<MyApp> {
                           ],
                         ),
                       ),
+                      activeColor: Color(0xFFF69A06),
                       value: temp_NA_verification,
                       onChanged: (value) {
                         setState(() {
@@ -214,6 +242,7 @@ class _MyAppState extends State<MyApp> {
                             }
                           },
                           style: ElevatedButton.styleFrom(
+                            foregroundColor: Color(0xFFF69A06),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(0.0), // Rectangular shape
                             ),
@@ -234,6 +263,8 @@ class _MyAppState extends State<MyApp> {
     }
     else{
     return MaterialApp(
+      darkTheme: ThemeData.dark(useMaterial3: true),
+      theme: ThemeData.dark(),
       routes: {
         '/projectpage': (context) => const ProjectPage(),
         '/feedbackpage': (context) => const FeedbackPage(),
@@ -254,7 +285,7 @@ class _MyAppState extends State<MyApp> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.yellow,
+          backgroundColor: Color(0xFFFFD700),
           onPressed: () {controller.jumpToPage(5);}, // TODO: "MAKE AN OBSERVATION"
           shape: const CircleBorder(),
           child: const Icon(Icons.camera_alt_rounded, color: Colors.black,),
@@ -264,10 +295,14 @@ class _MyAppState extends State<MyApp> {
           height: bottomNavigationBarHeight,
           child: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            unselectedLabelStyle: TextStyle(color: Colors.black),
-            selectedLabelStyle: TextStyle(color: Colors.black),
-            selectedItemColor: Colors.black,
-            unselectedItemColor: Colors.black,
+            backgroundColor: Colors.black, // Set background color to black
+            selectedItemColor: Color(0xFFF69A06), // Set selected item color to grey
+            unselectedItemColor: Colors.grey, // Set unselected item color to grey
+            selectedFontSize: 14, // Adjust font size for selected item
+            unselectedFontSize: 12, // Adjust font size for unselected item
+            selectedLabelStyle: TextStyle(color: Colors.white), // Set selected label text color to grey
+            unselectedLabelStyle: TextStyle(color: Colors.grey), // Set unselected label text color to grey
+
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(CupertinoIcons.location_circle),
@@ -293,10 +328,7 @@ class _MyAppState extends State<MyApp> {
             ],
             currentIndex: _selectedIndex,
             onTap: _onItemTapped,
-            selectedFontSize: 15.0,
-            unselectedFontSize: 15.0,
             iconSize: 30.0,
-            backgroundColor: Colors.grey[200],
             elevation: 0,
           ),
         ),

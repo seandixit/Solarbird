@@ -14,6 +14,13 @@ class _GuideTabState extends State<GuideTab> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Guide'),
+        bottom: PreferredSize(
+          child: Divider(
+            color: Colors.grey,
+            height: 1,
+          ),
+          preferredSize: Size.fromHeight(1),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -76,6 +83,7 @@ class RoundedButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
+        foregroundColor: Color(0xFFF69A06),
         padding: EdgeInsets.all(20),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),

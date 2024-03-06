@@ -63,14 +63,14 @@ class StepPage extends StatelessWidget{
           child: Icon(
             Icons.brightness_1,
             size: 10,
-            color: Colors.black54, // Adjust bullet point color here
+            color: Color(0xFFF69A06), // Adjust bullet point color here
           ),
         ),
         SizedBox(width: 5),
         Expanded(
           child: Text(
             text,
-            style: TextStyle(color: Colors.black), // Adjust text color here
+            style: TextStyle(color: Colors.white), // Adjust text color here
           ),
         ),
       ],

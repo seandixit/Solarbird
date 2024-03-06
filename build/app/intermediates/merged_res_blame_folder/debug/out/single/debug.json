@@ -1,26 +1,26 @@
 [
     {
-        "merged": "com.example.eclipse.app-merged_res-17:/mipmap-hdpi_ic_launcher.png.flat",
-        "source": "com.example.eclipse.app-main-11:/mipmap-hdpi/ic_launcher.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-mdpi/ic_launcher.png"
     },
     {
-        "merged": "com.example.eclipse.app-merged_res-17:/drawable-v21_launch_background.xml.flat",
-        "source": "com.example.eclipse.app-main-11:/drawable-v21/launch_background.xml"
+        "merged": "com.example.eclipse.app-merged_res-35:/drawable-v21_launch_background.xml.flat",
+        "source": "com.example.eclipse.app-main-29:/drawable-v21/launch_background.xml"
     },
     {
-        "merged": "com.example.eclipse.app-merged_res-17:/mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "com.example.eclipse.app-main-11:/mipmap-xxhdpi/ic_launcher.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-xxhdpi/ic_launcher.png"
     },
     {
-        "merged": "com.example.eclipse.app-merged_res-17:/mipmap-mdpi_ic_launcher.png.flat",
-        "source": "com.example.eclipse.app-main-11:/mipmap-mdpi/ic_launcher.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-hdpi/ic_launcher.png"
     },
     {
-        "merged": "com.example.eclipse.app-merged_res-17:/mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "com.example.eclipse.app-main-11:/mipmap-xxxhdpi/ic_launcher.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "com.example.eclipse.app-merged_res-17:/mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "com.example.eclipse.app-main-11:/mipmap-xhdpi/ic_launcher.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-xxxhdpi/ic_launcher.png"
     }
 ]

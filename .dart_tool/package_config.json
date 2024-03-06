@@ -38,6 +38,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "awesome_notifications",
+      "rootUri": "file:///C:/Users/postw/AppData/Local/Pub/Cache/hosted/pub.dev/awesome_notifications-0.7.4+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "bloc",
       "rootUri": "file:///C:/Users/postw/AppData/Local/Pub/Cache/hosted/pub.dev/bloc-8.1.2",
       "packageUri": "lib/",
@@ -746,7 +752,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2024-02-28T00:07:43.221329Z",
+  "generated": "2024-03-06T08:53:19.923308Z",
   "generator": "pub",
   "generatorVersion": "3.2.5"
 }
