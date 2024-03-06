@@ -1,44 +1,27 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.eclipse.app-mergeDebugResources-15:/values-th/values-th.xml",
+            "outputFile": "com.example.eclipse.app-mergeDebugResources-16:/values-th/values-th.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\postw\\.gradle\\caches\\transforms-3\\c2aff38445ebad8ddeaa989ecf50f56e\\transformed\\core-1.9.0\\res\\values-th\\values-th.xml",
+                    "source": "C:\\Users\\Ryan\\.gradle\\caches\\transforms-3\\6d3bbaf4594b8ed85e4722883be764b3\\transformed\\browser-1.4.0\\res\\values-th\\values-th.xml",
                     "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,158,257,368",
+                        "endColumns": "102,98,110,97",
+                        "endOffsets": "153,252,363,461"
                     },
                     "to": {
-                        "startLines": "29",
-                        "startColumns": "4",
-                        "startOffsets": "2860",
-                        "endColumns": "100",
-                        "endOffsets": "2956"
+                        "startLines": "20,30,31,32",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "2179,2963,3062,3173",
+                        "endColumns": "102,98,110,97",
+                        "endOffsets": "2277,3057,3168,3266"
                     }
                 },
                 {
-                    "source": "C:\\Users\\postw\\.gradle\\caches\\transforms-3\\58aa1384bde170d075503b845cfcf44c\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-th\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "195",
-                        "endColumns": "124",
-                        "endOffsets": "319"
-                    },
-                    "to": {
-                        "startLines": "10",
-                        "startColumns": "4",
-                        "startOffsets": "1025",
-                        "endColumns": "128",
-                        "endOffsets": "1149"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\postw\\.gradle\\caches\\transforms-3\\781e5567158e59d38ee2b89930f9808b\\transformed\\jetified-play-services-base-18.1.0\\res\\values-th\\values.xml",
+                    "source": "C:\\Users\\Ryan\\.gradle\\caches\\transforms-3\\781e5567158e59d38ee2b89930f9808b\\transformed\\jetified-play-services-base-18.1.0\\res\\values-th\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -55,7 +38,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\postw\\.gradle\\caches\\transforms-3\\e255c6ce9910a673f2619b479a7d74a8\\transformed\\jetified-exoplayer-core-2.18.7\\res\\values-th\\values-th.xml",
+                    "source": "C:\\Users\\Ryan\\.gradle\\caches\\transforms-3\\58aa1384bde170d075503b845cfcf44c\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-th\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "124",
+                        "endOffsets": "319"
+                    },
+                    "to": {
+                        "startLines": "10",
+                        "startColumns": "4",
+                        "startOffsets": "1025",
+                        "endColumns": "128",
+                        "endOffsets": "1149"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Ryan\\.gradle\\caches\\transforms-3\\e255c6ce9910a673f2619b479a7d74a8\\transformed\\jetified-exoplayer-core-2.18.7\\res\\values-th\\values-th.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",
@@ -64,11 +64,28 @@
                         "endOffsets": "126,189,257,325,402,475,566,652,731"
                     },
                     "to": {
-                        "startLines": "20,21,22,23,24,25,26,27,28",
+                        "startLines": "21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "2179,2255,2318,2386,2454,2531,2604,2695,2781",
+                        "startOffsets": "2282,2358,2421,2489,2557,2634,2707,2798,2884",
                         "endColumns": "75,62,67,67,76,72,90,85,78",
-                        "endOffsets": "2250,2313,2381,2449,2526,2599,2690,2776,2855"
+                        "endOffsets": "2353,2416,2484,2552,2629,2702,2793,2879,2958"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Ryan\\.gradle\\caches\\transforms-3\\c2aff38445ebad8ddeaa989ecf50f56e\\transformed\\core-1.9.0\\res\\values-th\\values-th.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "33",
+                        "startColumns": "4",
+                        "startOffsets": "3271",
+                        "endColumns": "100",
+                        "endOffsets": "3367"
                     }
                 }
             ]

@@ -7,9 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:selectable_box/selectable_box.dart';
 import 'package:timer_count_down/timer_count_down.dart';
 import 'package:eclipse/home.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 
 FirebaseFirestore db = FirebaseFirestore.instance;
+
 
 Map<String, dynamic> observationData = <String, dynamic>{
   "flying" : false,
@@ -27,14 +30,14 @@ Map<String, dynamic> observationData = <String, dynamic>{
 };
 
 
-class observation extends StatefulWidget {
-  const observation({super.key});
+class Observation extends StatefulWidget {
+  const Observation({super.key});
 
   @override
-  State<observation> createState() => _observationState();
+  State<Observation> createState() => _ObservationState();
 }
 
-class _observationState extends State<observation> {
+class _ObservationState extends State<Observation> {
   bool checkbox1 = false;
   bool checkbox2 = false;
   bool checkbox3 = false;
@@ -197,31 +200,51 @@ class observation2 extends StatefulWidget {
 }
 
 class _observation2State extends State<observation2> {
+  int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: [GridView.builder(
-          shrinkWrap: true,
-          itemCount: birds.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, ),
-            itemBuilder: (BuildContext context, int index){
-              return Expanded(
-                  child:Card(
-                    child: InkResponse(
-                      child: Column(children: [Text(birds.elementAt(index).elementAt(0)),birds.elementAt(index).elementAt(1)])
-                ),
-              ));
+        children: [
+        //   GridView.builder(
+        //   shrinkWrap: true,
+        //   itemCount: birds.length,
+        //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, ),
+        //     itemBuilder: (BuildContext context, int index){
+        //       return Expanded(
+        //           child:Card(
+        //             child: InkResponse(
+        //               child: Column(children: [Text(birds.elementAt(index).elementAt(0)),birds.elementAt(index).elementAt(1)])
+        //         ),
+        //       ));
+        //
+        // }),
+          ListView.builder(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemCount: birds.length,
+              itemBuilder: (BuildContext context, int index){
+              return ListTile(
+                  title: Text(birds.elementAt(index).elementAt(0)),
+                  leading: Image.asset('lib/sources/photos/american-robin.jpg', fit: BoxFit.fill,),
+                  tileColor: selectedIndex == index ? Colors.blue : null,
+                  onTap: () {
+                    setState(() {
+                      selectedIndex = index;
+                    });
+                  }
+              );
 
-        }),
-          ElevatedButton(onPressed: () {submit(); Navigator.pop(context);}, child: Text("Submit Observation"))
+              }),
+          ElevatedButton(onPressed: () {observationData.update("bird", (value) => birds.elementAt(selectedIndex).elementat(0)); submit(); Navigator.pop(context);}, child: Text("Submit Observation"))
         ]
       ),
     );
   }
 
   void submit() {
-    // db.collection("data").add(observationData);
+    db.collection("data").add(observationData);
     if (kDebugMode) {
       print(observationData);
     }
@@ -231,7 +254,7 @@ class _observation2State extends State<observation2> {
 
 
 List birds = [
-  ["American Robin",Image.asset("lib/sources/photos/american-robin.jpg")],
+  ["Don't Know",Image.asset('lib/sources/photos/x.png')],
   ["American Robin",Image.asset("lib/sources/photos/american-robin.jpg")],
   ["American Robin",Image.asset("lib/sources/photos/american-robin.jpg")],
   ["American Robin",Image.asset("lib/sources/photos/american-robin.jpg")],

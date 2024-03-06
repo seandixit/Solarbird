@@ -18,6 +18,7 @@
     <string name="common_open_on_phone">Адкрыць на тэлефоне</string>
     <string name="common_signin_button_text">Увайсцi</string>
     <string name="common_signin_button_text_long">Увайсці праз Google</string>
+    <string msgid="3260749812566568062" name="copy_toast_msg">"Спасылка скапіравана ў буфер абмену"</string>
     <string name="exo_download_completed">Спампоўка завершана</string>
     <string name="exo_download_description">Спампаваць</string>
     <string name="exo_download_downloading">Спампоўваецца</string>
@@ -27,5 +28,8 @@
     <string name="exo_download_paused_for_network">Спампоўкі чакаюць падключэння да сеткі</string>
     <string name="exo_download_paused_for_wifi">Спампоўкі чакаюць падключэння да Wi-Fi</string>
     <string name="exo_download_removing">Выдаленне спамповак</string>
+    <string msgid="4566929209979330987" name="fallback_menu_item_copy_link">"Скапіраваць спасылку"</string>
+    <string msgid="3413186855122069269" name="fallback_menu_item_open_in_browser">"Адкрыць у браўзеры"</string>
+    <string msgid="7145444925855055364" name="fallback_menu_item_share_link">"Абагуліць спасылку"</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
 </resources>

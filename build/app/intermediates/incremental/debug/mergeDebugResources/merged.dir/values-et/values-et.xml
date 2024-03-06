@@ -18,6 +18,7 @@
     <string name="common_open_on_phone">Ava telefonis</string>
     <string name="common_signin_button_text">Logi sisse</string>
     <string name="common_signin_button_text_long">Logi sisse Google\'i kontoga</string>
+    <string msgid="3260749812566568062" name="copy_toast_msg">"Link kopeeriti lõikelauale"</string>
     <string name="exo_download_completed">Allalaadimine lõpetati</string>
     <string name="exo_download_description">Allalaadimine</string>
     <string name="exo_download_downloading">Allalaadimine</string>
@@ -27,5 +28,8 @@
     <string name="exo_download_paused_for_network">Allalaadimised on võrgu ootel</string>
     <string name="exo_download_paused_for_wifi">Allalaadimised on WiFi-võrgu ootel</string>
     <string name="exo_download_removing">Allalaadimiste eemaldamine</string>
+    <string msgid="4566929209979330987" name="fallback_menu_item_copy_link">"Kopeeri link"</string>
+    <string msgid="3413186855122069269" name="fallback_menu_item_open_in_browser">"Ava brauseris"</string>
+    <string msgid="7145444925855055364" name="fallback_menu_item_share_link">"Jaga linki"</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
 </resources>

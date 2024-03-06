@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "497493885773",
+    "project_id": "eclipse-app-62eb8",
+    "storage_bucket": "eclipse-app-62eb8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497493885773:android:99bdf07e4329458443ad04",
+        "android_client_info": {
+          "package_name": "com.example.eclipse"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbDHQfNhLOtOZ8p7gCN0tyE-H-B2K7WDI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

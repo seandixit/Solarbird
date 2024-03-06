@@ -4,6 +4,7 @@ import 'package:eclipse/aboutPages/terms.dart';
 import 'package:eclipse/guidePages/bird.dart';
 import 'package:eclipse/guidePages/practice.dart';
 import 'package:eclipse/guidePages/step.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_js/flutter_js.dart';
 
@@ -23,8 +24,16 @@ import 'package:flutter/material.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'firebase_options.dart';
+
+void main() async{
   runApp(const MyApp());
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await FirebaseAuth.instance.signInAnonymously();
 }
 
 class MyApp extends StatefulWidget {
@@ -82,7 +91,7 @@ class _MyAppState extends State<MyApp> {
     new Center(child: null),
     new Center(child: new log.LogTab()),
     new Center(child: new about.AboutTab()),
-    new Center(child: observation.observation()),
+    new Center(child: new observation.Observation()),
   ];
 
   @override
@@ -242,7 +251,7 @@ class _MyAppState extends State<MyApp> {
         '/termspage': (context) => const TermsPage(),
         '/birdpage': (context) => const BirdPage(),
         '/steppage': (context) => const StepPage(),
-        '/practicepage': (context) => const PracticeStep(),
+        '/practicepage': (context) => const PracticeStep()
 
       },
       home: Scaffold(
@@ -255,7 +264,7 @@ class _MyAppState extends State<MyApp> {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.yellow,
-          onPressed: () {controller.jumpToPage(5);}, // TODO: "MAKE AN OBSERVATION"
+          onPressed: () {controller.jumpToPage(0); controller.jumpToPage(5);}, // TODO: "MAKE AN OBSERVATION"
           shape: const CircleBorder(),
           child: const Icon(Icons.camera_alt_rounded, color: Colors.black,),
         ),
