@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -36,7 +38,29 @@ class _HomeTabState extends State<HomeTab> {
   void initState() {
     super.initState();
     _checkLocationPermission();
+    initTimer();
   }
+
+  Timer? timer;
+
+  void initTimer() {
+    if (timer != null && timer!.isActive) return;
+
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) { // TODO: test optimal seconds val, CHANGE to 15-30 seconds
+      //job
+      setState(() {
+        moonPosition = calculateMoonPosition();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
+  }
+
+  double moonPosition = -20000; // TODO: will have to have it in sharedPref
 
 
   Future<void> showScheduledNotification(int id, String channelKey,
@@ -130,6 +154,33 @@ class _HomeTabState extends State<HomeTab> {
       ),
     ],
   );
+
+  // TODO: test
+  DateTime timeEclipseBegins = DateTime(2024, 3, 7, 19, 40); // Example time
+  //DateTime timeTotalityBegins = DateTime(2024, 3, 7, 12, 30); // Example time
+  DateTime timeMaxEclipse = DateTime(2024, 3, 7, 19, 42); // Example time
+  DateTime timeEclipseEnds = DateTime(2024, 3, 7, 19, 44);
+
+  // Calculate the left position of the moon container based on current time
+  double calculateMoonPosition() {
+    DateTime currentTime = DateTime.now();
+    double progress = 0.0;
+
+    print(currentTime);
+    if (currentTime.isBefore(timeEclipseBegins)) {
+      progress = 0.0;
+    } else if (currentTime.isAfter(timeEclipseEnds)) {
+      progress = 1.0;
+    } else {
+      progress = (currentTime.difference(timeEclipseBegins).inSeconds /
+          timeEclipseEnds.difference(timeEclipseBegins).inSeconds)
+          .clamp(0.0, 1.0);
+    }
+    // Adjust the left position of the moon container based on the progress
+    print(MediaQuery.of(context).size.width * (0.424) - 62.5 + 125 * progress);
+    return MediaQuery.of(context).size.width * (0.424) - 62.5 + 125 * progress;
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -207,12 +258,12 @@ class _HomeTabState extends State<HomeTab> {
                         // IF MOON OVERLAPPING STAR,
                         // MAKE THE COLOR OF MOON DARKER
                         Positioned(
-                          left: 171.5, // Adjust the left position as needed
+                          left: moonPosition, // Adjust the left position as needed
                           child: Container(
-                            width: 50, // Adjust the size as needed
-                            height: 50, // Adjust the size as needed
+                            width: 60, // Adjust the size as needed
+                            height: 60, // Adjust the size as needed
                             decoration: BoxDecoration(
-                              color: Color(0xFF000000), // White color
+                              color: Color(0xFF000000), // Black color
                               shape: BoxShape.circle,
                             ),
                           ),
@@ -241,7 +292,7 @@ class _HomeTabState extends State<HomeTab> {
                   Text(
                     "Looks like you have location turned off",
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.white,
                       fontStyle: FontStyle.italic,
                     ),
                   ),

@@ -146,6 +146,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "cron",
+      "rootUri": "file:///C:/Users/postw/AppData/Local/Pub/Cache/hosted/pub.dev/cron-0.6.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "cross_file",
       "rootUri": "file:///C:/Users/postw/AppData/Local/Pub/Cache/hosted/pub.dev/cross_file-0.3.3+6",
       "packageUri": "lib/",
@@ -752,7 +758,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2024-03-06T08:53:19.923308Z",
+  "generated": "2024-03-08T01:40:57.637234Z",
   "generator": "pub",
   "generatorVersion": "3.2.5"
 }

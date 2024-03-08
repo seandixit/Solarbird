@@ -109,7 +109,6 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     double bottomNavigationBarHeight = MediaQuery.of(context).size.height * 0.08;
 
-
     if (_NA_verification != null && !_NA_verification!) { // return consent/emailid screen
       return MaterialApp(
         theme: ThemeData.dark().copyWith(

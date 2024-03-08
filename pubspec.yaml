@@ -48,6 +48,7 @@ dependencies:
   survey_kit: ^0.1.1
   google_maps_flutter: ^2.5.3
   awesome_notifications: ^0.7.4+1
+  cron: ^0.6.0
 
 
 dev_dependencies:
