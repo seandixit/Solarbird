@@ -1,6 +1,6 @@
-# eclipse
+# SolarBird
 
-IU Eclipse App
+App made by IU researchers to allow citizen scientists to make observations on bird behavior during the upcoming April 8th solar eclipse.
 
 ## Getting Started
 
