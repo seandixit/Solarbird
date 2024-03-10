@@ -9,9 +9,11 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_js/flutter_js.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({Key? key}) : super(key: key);
+
 
   @override
   State<HomeTab> createState() => _HomeTabState();
@@ -33,12 +35,17 @@ class HomeTab extends StatefulWidget {
 class _HomeTabState extends State<HomeTab> {
 
   bool locationRetrieved = false;
+  late SharedPreferences _prefs;
+
+  late String _lat;
+  late String _long;
 
   @override
   void initState() {
     super.initState();
     _checkLocationPermission();
     initTimer();
+    _loadData();
   }
 
   Timer? timer;
@@ -58,10 +65,27 @@ class _HomeTabState extends State<HomeTab> {
   void dispose() {
     timer?.cancel();
     super.dispose();
+    mapController.dispose();
   }
 
   double moonPosition = -20000; // TODO: will have to have it in sharedPref
 
+
+  // Function to load data from SharedPreferences
+  Future<void> _loadData() async {
+    _prefs = await SharedPreferences.getInstance();
+    if (this.mounted){
+      setState(() {
+        // Initialize variables with data from SharedPreferences or default values
+        _lat = _prefs.getString('lat') ?? '';
+        _long = _prefs.getString('long') ?? '';
+      });}
+  }
+  // Function to save data to SharedPreferences
+  Future<void> _saveData() async {
+    _prefs.setString('lat', _lat ?? "");
+    _prefs.setString('long', _long ?? "");
+  }
 
   Future<void> showScheduledNotification(int id, String channelKey,
       String title, String body, DateTime interval) async {
@@ -92,18 +116,23 @@ class _HomeTabState extends State<HomeTab> {
         locationRetrieved = false;
       });
     } else {
-      setState(() {
+      setState(() async {
         _getCurrentLocation().then((value) {
           lat = '${value.latitude}';
           long = '${value.longitude}';
           altitude = '${value.altitude}';
           setState(() {
+            _lat = lat;
+            _long = long;
+            print("DATA SAVED");
             online_color = Colors.green;
             locationMessage = 'Lat: $lat, Long: $long, Alt: $altitude';
             getLocationInfo();
             locationRetrieved = true;
             _setMap();
-          });});
+          });
+        });
+        await _saveData();
         _liveLocation();
         locationRetrieved = true;
       });
@@ -156,10 +185,10 @@ class _HomeTabState extends State<HomeTab> {
   );
 
   // TODO: test
-  DateTime timeEclipseBegins = DateTime(2024, 3, 7, 19, 40); // Example time
+  DateTime timeEclipseBegins = DateTime(2024, 3, 8, 11, 54); // Example time
   //DateTime timeTotalityBegins = DateTime(2024, 3, 7, 12, 30); // Example time
-  DateTime timeMaxEclipse = DateTime(2024, 3, 7, 19, 42); // Example time
-  DateTime timeEclipseEnds = DateTime(2024, 3, 7, 19, 44);
+  DateTime timeMaxEclipse = DateTime(2024, 3, 8, 11, 55); // Example time
+  DateTime timeEclipseEnds = DateTime(2024, 3, 8, 11, 56);
 
   // Calculate the left position of the moon container based on current time
   double calculateMoonPosition() {
@@ -300,7 +329,7 @@ class _HomeTabState extends State<HomeTab> {
                     child: ElevatedButton(
                       onPressed: () {
                         setState(() { loading = true; });
-                        _getCurrentLocation().then((value) {
+                        _getCurrentLocation().then((value) async {
                           lat = '${value.latitude}';
                           long = '${value.longitude}';
                           altitude = '${value.altitude}';
@@ -311,8 +340,12 @@ class _HomeTabState extends State<HomeTab> {
                             locationRetrieved = true;
                             loading = false;
                             _setMap();
+                            _lat = lat;
+                            _long = long;
+                            print("DATA SAVED");
                           });
 
+                          await _saveData();
                           _liveLocation();
                         }).catchError((error) { setState(() {
                           loading = false;
@@ -365,12 +398,17 @@ class _HomeTabState extends State<HomeTab> {
       distanceFilter: 100,
     );
 
-    Geolocator.getPositionStream(locationSettings: locationSettings).listen((Position position) {
+    Geolocator.getPositionStream(locationSettings: locationSettings).listen((Position position) async {
       lat = position.latitude.toString();
       long = position.longitude.toString();
 
       setState(() {
+        _lat = lat;
+        _long = long;
+        print("DATA SAVED");
+        _saveData();
         //locationMessage = 'Lat: $lat, Long: $long, Alt: $altitude';
+
         getLocationInfo();
         mapController.animateCamera(CameraUpdate.newLatLng(LatLng(position.latitude, position.longitude)));
         _setMap();
@@ -383,7 +421,13 @@ class _HomeTabState extends State<HomeTab> {
 
   void _onMapCreated(GoogleMapController controller) {
     setState(() {
-      mapController = controller.setMapStyle('''[
+      mapController = controller;
+      _setMapStyle();
+    });
+  }
+
+  void _setMapStyle() async {
+    String style = '''[
   {
     "elementType": "geometry",
     "stylers": [
@@ -560,8 +604,9 @@ class _HomeTabState extends State<HomeTab> {
       }
     ]
   }
-]''') as GoogleMapController;
-    });
+]''';
+
+    await mapController.setMapStyle(style);
   }
 
   Future<void> _setMap() async {
