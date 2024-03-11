@@ -92,6 +92,7 @@ class _MyAppState extends State<MyApp> {
     new Center(child: new log.LogTab()),
     new Center(child: new about.AboutTab()),
     new Center(child: new observation.Observation()),
+    new Center(child: new observe.question2())
   ];
 
   @override

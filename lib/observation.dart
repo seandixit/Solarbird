@@ -1,3 +1,7 @@
+// TODO finish getting all data to submit, finish slider display
+
+
+
 import 'dart:ffi';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -10,25 +14,32 @@ import 'package:eclipse/home.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
-
 FirebaseFirestore db = FirebaseFirestore.instance;
 
-
 Map<String, dynamic> observationData = <String, dynamic>{
-  "flying" : false,
-  "ground" : false,
-  "tree" : false,
-  "singing" : false,
-  "eating" : false,
-  "sleeping" : false,
-  "lat" : null,
-  "lang" : null,
-  "bird" : null,
-
-
-  "practice" : false,
+  "flying": false,
+  "ground": false,
+  "tree": false,
+  "singing": false,
+  "eating": false,
+  "sleeping": false,
+  "lat": null,
+  "lang": null,
+  "bird": null,
+  "practice": false,
 };
 
+List doing = [
+  "Flying",
+  "Swimming",
+  "Singing",
+  "On ground",
+  "On wire, fence or building",
+  "Eating",
+  "Perched in tree/bush (alone)",
+  "Perched in tree/bush (multiple birds)",
+  "Other"
+];
 
 class Observation extends StatefulWidget {
   const Observation({super.key});
@@ -38,16 +49,7 @@ class Observation extends StatefulWidget {
 }
 
 class _ObservationState extends State<Observation> {
-  bool checkbox1 = false;
-  bool checkbox2 = false;
-  bool checkbox3 = false;
-  bool checkbox4 = false;
-  bool checkbox5 = false;
-  bool checkbox6 = false;
-  bool checkbox7 = false;
-  bool checkbox8 = false;
-  bool checkbox9 = false;
-
+  List<bool> dataOut = List.filled(doing.length, false);
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +65,32 @@ class _ObservationState extends State<Observation> {
             build: (_, double time) => Text(time.toInt().toString(),
                 style: const TextStyle(fontSize: 100))),
         Center(child: Text("Check anything that the bird did")),
-        GridView.count(
+        GridView.builder(
+            itemCount: doing.length,
+            shrinkWrap: true,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3),
+            itemBuilder: (BuildContext context, int index) {
+              return SelectableBox(
+                  checkboxPadding: const EdgeInsets.all(0),
+                  selectedIcon: const Icon(
+                    Icons.check_circle,
+                    color: Colors.green,
+                  ),
+                  unSelectedIcon: const Icon(
+                    Icons.remove_circle,
+                    color: Colors.red,
+                  ),
+                  onTap: () {
+                    setState(() {
+                      dataOut[index] = !dataOut[index];
+                    });
+                  },
+                  isSelected: dataOut[index],
+                  child: Center(child: Text(doing[index])));
+            }),
+
+        /* GridView.count(
           shrinkWrap: true,
           crossAxisCount: 3,
           children: [
@@ -177,6 +204,8 @@ class _ObservationState extends State<Observation> {
                 child: Center(child: Text("Sleeping/In nest"))),
           ],
         ),
+        */
+
         ElevatedButton(
             onPressed: () {
               _navigateToObservation2(context);
@@ -201,45 +230,49 @@ class observation2 extends StatefulWidget {
 
 class _observation2State extends State<observation2> {
   int selectedIndex = 0;
+  double _currentSliderValue = 1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: [
-        //   GridView.builder(
-        //   shrinkWrap: true,
-        //   itemCount: birds.length,
-        //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, ),
-        //     itemBuilder: (BuildContext context, int index){
-        //       return Expanded(
-        //           child:Card(
-        //             child: InkResponse(
-        //               child: Column(children: [Text(birds.elementAt(index).elementAt(0)),birds.elementAt(index).elementAt(1)])
-        //         ),
-        //       ));
-        //
-        // }),
-          ListView.builder(
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              itemCount: birds.length,
-              itemBuilder: (BuildContext context, int index){
-              return ListTile(
-                  title: Text(birds.elementAt(index).elementAt(0)),
-                  leading: Image.asset('lib/sources/photos/american-robin.jpg', fit: BoxFit.fill,),
-                  tileColor: selectedIndex == index ? Colors.blue : null,
-                  onTap: () {
-                    setState(() {
-                      selectedIndex = index;
-                    });
-                  }
-              );
-
-              }),
-          ElevatedButton(onPressed: () {observationData.update("bird", (value) => birds.elementAt(selectedIndex).elementat(0)); submit(); Navigator.pop(context);}, child: Text("Submit Observation"))
-        ]
-      ),
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text("Select the approximate size of the bird"),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
+              child: Image.asset("lib/sources/bird sizes.png"),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SliderTheme(
+                data: SliderThemeData(
+                  activeTrackColor: Colors.transparent,
+                  inactiveTrackColor: Colors.transparent,
+                  tickMarkShape: RoundSliderTickMarkShape(tickMarkRadius: 4),
+                  activeTickMarkColor: Colors.red,
+                  inactiveTickMarkColor: Colors.red,
+                ),
+                child: Slider(
+                    value: _currentSliderValue,
+                    max: 100,
+                    divisions: 6,
+                    label: sliderDisplay(_currentSliderValue.round()),
+                    onChanged: (double value) {
+                      setState(() {
+                        _currentSliderValue = value;
+                      });
+                    }),
+              ),
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  submit();
+                  Navigator.pop(context);
+                },
+                child: Text("Submit Observation"))
+          ]),
     );
   }
 
@@ -249,16 +282,28 @@ class _observation2State extends State<observation2> {
       print(observationData);
     }
     //TODO compile all data
+
+    //TODO add obscuration, gps, ip address, time, relative time +/- and delta
   }
 }
 
-
-List birds = [
-  ["Don't Know",Image.asset('lib/sources/photos/x.png')],
-  ["American Robin",Image.asset("lib/sources/photos/american-robin.jpg")],
-  ["American Robin",Image.asset("lib/sources/photos/american-robin.jpg")],
-  ["American Robin",Image.asset("lib/sources/photos/american-robin.jpg")],
-  ["American Robin",Image.asset("lib/sources/photos/american-robin.jpg")],
-  ["American Robin",Image.asset("lib/sources/photos/american-robin.jpg")],
-  ["American Robin",Image.asset("lib/sources/photos/american-robin.jpg")],
-];
+sliderDisplay(int value) {
+  int div = 6;
+  if (value < 1) {
+    return "Tiny";
+  } else if (value < 15) {
+    return "Small";
+  } else if (value < 29) {
+    return "Medium";
+  } else if (value < 43) {
+    return "large";
+  } else if (value < 58) {
+    return "Largest";
+  } else if (value < 71) {
+    return "Largest";
+  } else if (value < 85) {
+    return "Largest";
+  } else if (value < 101) {
+    return "Largest";
+  }
+}
