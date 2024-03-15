@@ -317,6 +317,26 @@ function getsunriset(elements,circumstances,riset) {
     }
   }
 
+  // Copy a set of circumstances
+  function copycircumstances(circumstancesfrom, circumstancesto) {
+    var i;
+  
+    for (i = 1 ; i < 41 ; i++) {
+      circumstancesto[i] = circumstancesfrom[i];
+    }
+  }
+
+// Calculate the time of sunrise
+function getsunrise(elements,circumstances) {
+  getsunriset(elements,circumstances,-1.0)
+}
+
+//
+// Calculate the time of sunset
+function getsunset(elements,circumstances) {
+  getsunriset(elements,circumstances,1.0)
+}
+
 // Populate the c1, c2, mid, c3 and c4 arrays
 function getall(elements) {
     var pattern
@@ -866,4 +886,4 @@ function SE2001(lat, long, alt, timeOffset) {
   //}
 
   
-  //console.log(recalculate(44.966667, 93.25, 0));
+  //console.log(recalculate(-86.5, 10.0, 250, 0));
