@@ -117,145 +117,152 @@ class _MyAppState extends State<MyApp> {
         darkTheme: ThemeData.dark(useMaterial3: true).copyWith(
           scaffoldBackgroundColor: Color(0xFF1E1B22),
         ),
-        home: Scaffold(
-          resizeToAvoidBottomInset: false,
-          appBar: AppBar(
-            title: Text(''),
-          ),
-          body: Builder( // Use Builder widget to get a context within the MaterialApp
-            builder: (BuildContext context) {
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Image(image: AssetImage('lib/sources/unlabelled_logo.jpg'), height: 330, width: 330),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 0),
-                      child: Text(
-                        'Insert email address here if you would like to be notified of the research results',
-                        style: TextStyle(fontSize: 16.0),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Container(
-                        height: 50.0,
-                        width: MediaQuery.of(context).size.width - 40.0, // Adjust width here
-                        child: TextField(
-                          onChanged: (value) {
-                            setState(() {
-                              temp_emailid = value;
-                            });
-                          },
-                          style: TextStyle(
-                            fontSize: 13.0, // Adjust the font size here
-                          ),
-                          decoration: const InputDecoration(
-                            labelText: 'Email',
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 0),
-                      child: Text(
-                        'Insert your first and last name if you would like to be acknowledged in the expected scientific publication',
-                        style: TextStyle(fontSize: 16.0),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Container(
-                        height: 50.0,
-                        child: TextField(
-                          onChanged: (value) {
-                            setState(() {
-                              temp_name = value;
-                            });
-                          },
-                          style: TextStyle(
-                            fontSize: 13.0, // Adjust the font size here
-                          ),
-                          decoration: const InputDecoration(
-                            labelText: 'First and Last Name',
-                            focusColor: Color(0xFFF69A06),
-                          ),
-                        ),
-                      ),
-                    ),
-                    CheckboxListTile(
-                      contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 10.0),
-                      title: RichText(
-                        text: TextSpan(
-                          text: 'By checking this box, you verify that you are currently located in North America',
-                          style: TextStyle(
-                            fontSize: 16.0,
-                            color: Colors.white, // Color for the text without the asterisk
-                          ),
-                          children: [
-                            TextSpan(
-                              text: ' *',
-                              style: TextStyle(
-                                color: Colors.red, // Color for the asterisk
+          home: Scaffold(
+            appBar: AppBar(
+              title: Text(''),
+              surfaceTintColor: Colors.transparent,
+            ),
+            body: Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Builder(
+                      builder: (BuildContext context) {
+                        return Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Image(image: AssetImage('lib/sources/unlabelled_logo.jpg'), height: 330, width: 330),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 0),
+                                child: Text(
+                                  'Insert email address here if you would like to be notified of the research results',
+                                  style: TextStyle(fontSize: 16.0),
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      activeColor: Color(0xFFF69A06),
-                      value: temp_NA_verification,
-                      onChanged: (value) {
-                        setState(() {
-                          temp_NA_verification = value!;
-                        });
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                                child: Container(
+                                  height: 50.0,
+                                  width: MediaQuery.of(context).size.width - 40.0, // Adjust width here
+                                  child: TextField(
+                                    onChanged: (value) {
+                                      setState(() {
+                                        temp_emailid = value;
+                                      });
+                                    },
+                                    style: TextStyle(
+                                      fontSize: 13.0, // Adjust the font size here
+                                    ),
+                                    decoration: const InputDecoration(
+                                      labelText: 'Email',
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 0),
+                                child: Text(
+                                  'Insert your first and last name if you would like to be acknowledged in the expected scientific publication',
+                                  style: TextStyle(fontSize: 16.0),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                                child: Container(
+                                  height: 50.0,
+                                  child: TextField(
+                                    onChanged: (value) {
+                                      setState(() {
+                                        temp_name = value;
+                                      });
+                                    },
+                                    style: TextStyle(
+                                      fontSize: 13.0, // Adjust the font size here
+                                    ),
+                                    decoration: const InputDecoration(
+                                      labelText: 'First and Last Name',
+                                      focusColor: Color(0xFFF69A06),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              CheckboxListTile(
+                                contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 10.0),
+                                title: RichText(
+                                  text: TextSpan(
+                                    text: 'By checking this box, you verify that you are currently located in North America',
+                                    style: TextStyle(
+                                      fontSize: 16.0,
+                                      color: Colors.white, // Color for the text without the asterisk
+                                    ),
+                                    children: [
+                                      TextSpan(
+                                        text: ' *',
+                                        style: TextStyle(
+                                          color: Colors.red, // Color for the asterisk
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                activeColor: Color(0xFFF69A06),
+                                value: temp_NA_verification,
+                                onChanged: (value) {
+                                  setState(() {
+                                    temp_NA_verification = value!;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
+                        );
                       },
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(0),
-                      child: Container(
-                        width: double.infinity, // Width spans the whole screen
-                        height: 50,
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            if (!temp_NA_verification) {
-                              // If not from North America, show dialog
-                              showDialog(
-                                context: context,
-                                builder: (context) => AlertDialog(
-                                  title: Text("Alert"),
-                                  content: Text("Must be from North America to continue"),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop(); // Close the dialog
-                                      },
-                                      child: Text("OK"),
-                                    ),
-                                  ],
-                                ),
-
-                              );
-                            } else {
-                              await _saveData(); // Save data to SharedPreferences
-                              setState(() {}); // Rebuild UI
-                            }
-                          },
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Color(0xFFF69A06),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(0.0), // Rectangular shape
-                            ),
-                          ),
-                          child: Text('Submit'),
-                        ),
-                      ),)
-                  ],
+                  ),
                 ),
-              );
-            },
-          ),
-        ),
-      );
+                Padding(
+                  padding: const EdgeInsets.all(0),
+                  child: Container(
+                    width: double.infinity, // Width spans the whole screen
+                    height: 50,
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        if (!temp_NA_verification) {
+                          // If not from North America, show dialog
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: Text("Alert"),
+                              content: Text("Must be from North America to continue"),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop(); // Close the dialog
+                                  },
+                                  child: Text("OK"),
+                                ),
+                              ],
+                            ),
+                          );
+                        } else {
+                          await _saveData(); // Save data to SharedPreferences
+                          setState(() {}); // Rebuild UI
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Color(0xFFF69A06),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(0.0), // Rectangular shape
+                        ),
+                      ),
+                      child: Text('Submit'),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ));
 
 
 
@@ -285,9 +292,9 @@ class _MyAppState extends State<MyApp> {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
           backgroundColor: Color(0xFFFFD700),
-          onPressed: () {controller.jumpToPage(5);}, // TODO: "MAKE AN OBSERVATION"
+          onPressed: () {controller.jumpToPage(5);},
           shape: const CircleBorder(),
-          child: const Icon(Icons.camera_alt_rounded, color: Colors.black,),
+          child: Image.asset('lib/sources/bino2.png', width: 90, height: 80),
         ),
 
         bottomNavigationBar: SizedBox(

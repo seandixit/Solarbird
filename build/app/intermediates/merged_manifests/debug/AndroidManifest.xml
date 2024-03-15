@@ -67,7 +67,7 @@
         android:name="android.app.Application"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/out_logo"
         android:label="Solarbird" >
         <activity
             android:name="com.example.eclipse.MainActivity"

@@ -185,10 +185,10 @@ class _HomeTabState extends State<HomeTab> {
   );
 
   // TODO: test
-  DateTime timeEclipseBegins = DateTime(2024, 3, 8, 11, 54); // Example time
+  DateTime timeEclipseBegins = DateTime(2024, 4, 8, 11, 54); // Example time
   //DateTime timeTotalityBegins = DateTime(2024, 3, 7, 12, 30); // Example time
-  DateTime timeMaxEclipse = DateTime(2024, 3, 8, 11, 55); // Example time
-  DateTime timeEclipseEnds = DateTime(2024, 3, 8, 11, 56);
+  DateTime timeMaxEclipse = DateTime(2024, 4, 8, 11, 55); // Example time
+  DateTime timeEclipseEnds = DateTime(2024, 4, 8, 11, 56);
 
   // Calculate the left position of the moon container based on current time
   double calculateMoonPosition() {

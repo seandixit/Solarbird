@@ -135,7 +135,7 @@
 68        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 68-->[androidx.core:core:1.9.0] C:\Users\postw\.gradle\caches\transforms-3\4dd3635bbed82c605b02fe61f947c24c\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
 69        android:debuggable="true"
-70        android:icon="@mipmap/ic_launcher"
+70        android:icon="@mipmap/out_logo"
 71        android:label="Solarbird" >
 72        <activity
 73            android:name="com.example.eclipse.MainActivity"

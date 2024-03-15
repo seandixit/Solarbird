@@ -6,7 +6,7 @@
     <application
         android:label="Solarbird"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/out_logo">
 
         <activity
             android:name=".MainActivity"
