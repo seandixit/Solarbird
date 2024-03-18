@@ -25,17 +25,6 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  AwesomeNotifications().initialize(
-    null,
-    [
-      NotificationChannel(
-        channelKey: 'basic_channel',
-        channelName: 'Basic Notifications',
-        channelDescription: 'Notif channel for basic tests',
-      ),
-    ],
-    debug: true,
-  );
   runApp(const MyApp());
 }
 
@@ -63,12 +52,6 @@ class _MyAppState extends State<MyApp> {
   bool temp_NA_verification = false;
   @override
   void initState() {
-    AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
-      if (!isAllowed){
-        AwesomeNotifications().requestPermissionToSendNotifications();
-      }
-    });
-
     super.initState();
     _loadData();
   }

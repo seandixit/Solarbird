@@ -92,6 +92,9 @@ flutter:
     - lib/sources/
     - lib/sources/photos/american-robin.jpg
     - lib/sources/photos/x.png
+    - lib/sources/out_logo_android.png
+    - lib/sources/out_logo_80.png
+    - android/app/src/main/res/drawable/out_logo_draw2.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

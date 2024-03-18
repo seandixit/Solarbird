@@ -808,6 +808,7 @@ function calculatefor(lat, long, alt, timeOffset, el) {
       // Central eclipse ends
       if ((mid[39] > 1) && (c3[40] != 4)) {
         console.log(gettime(el,c3));
+        returnList.push(gettime(el,c3) + "tot_ends");
       } else {
       }
         // Partial eclipse ends
@@ -815,6 +816,7 @@ function calculatefor(lat, long, alt, timeOffset, el) {
         } else {
         // Partial eclipse ends
         console.log(gettime(el,c4));
+        returnList.push(gettime(el,c4) + "ec_ends");
         // ... sun alt
         console.log(getalt(c4));
         }
@@ -834,6 +836,9 @@ function calculatefor(lat, long, alt, timeOffset, el) {
       }
     }
     var resultString = returnList.join(' ');
+    console.log(resultString);
+    console.log('ABC^');
+    console.log(lat, long, alt, timeOffset);
     return resultString;
   }
 

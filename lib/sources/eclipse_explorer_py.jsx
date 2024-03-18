@@ -465,7 +465,7 @@ function readform(lat, long, alt, timeOffset) {
     //lat_arr = ConvertDDToDMS(lat, false);
     // Latitude
     //var latDegrees = Math.abs(parseInt(lat_arr[deg])) //39;
-    //console.log(latDegrees)
+    ////console.log(latDegrees)
     //var latMinutes = Math.abs(parseInt(lat_arr[min]))//46;
     //var latSeconds = Math.abs(parseInt(lat_arr[sec]));
     var latDirection = 1; // 1 for North
@@ -509,7 +509,7 @@ function readform(lat, long, alt, timeOffset) {
     obsvconst[4] = 0.99664719 * Math.sin(tmp) + (obsvconst[2] / 6378140.0) * Math.sin(obsvconst[0]);
     obsvconst[5] = Math.cos(tmp) + (obsvconst[2] / 6378140.0 * Math.cos(obsvconst[0]));
 
-    console.log(obsvconst)
+    //console.log(obsvconst)
     // The index of the selected eclipse...
     // obsvconst[6] = 28 * (parseInt(document.eclipseform.index.options[document.eclipseform.index.selectedIndex].value) + 65);
 }
@@ -590,16 +590,16 @@ function gettime(elements,circumstances) {
       ans = ans + Math.floor(t)
     }
     if (circumstances[40] == 1) {
-      console.log("TIME: " + ans + " (below horizon)");
+      //console.log("TIME: " + ans + " (below horizon)");
       return ans //+ " (below horizon)"
     } else if (circumstances[40] == 2) {
-        console.log("TIME: " + ans + " (sunrise)");
+        //console.log("TIME: " + ans + " (sunrise)");
         return ans //+ " (sunrise)"
     } else if (circumstances[40] == 3) {
-        console.log("TIME: " + ans+"(sunset)");
+        //console.log("TIME: " + ans+"(sunset)");
         return ans //+"(sunset)";
     } else {
-        console.log("TIME: " + ans);
+        //console.log("TIME: " + ans);
         return ans
     }
   }
@@ -609,11 +609,11 @@ function getalt(circumstances) {
     var t, ans
   
     if (circumstances[40] == 2) {
-      console.log("ALT: 0(sunrise)");
+      //console.log("ALT: 0(sunrise)");
       return 
     }
     if (circumstances[40] == 3) {
-        console.log("ALT: 0(sunset)");
+        //console.log("ALT: 0(sunset)");
         return 
     }
     if ((circumstances[32] < 0.0) && (circumstances[32] >= -0.00524)) {
@@ -634,10 +634,10 @@ function getalt(circumstances) {
     }
     ans = ans + t
     if (circumstances[40] == 1) {
-      console.log("ALT: " + ans + " (below horizon)");
+      //console.log("ALT: " + ans + " (below horizon)");
       return
     } else {
-        console.log("ALT :" + ans)
+        //console.log("ALT :" + ans)
         return 
     }
   }
@@ -663,10 +663,10 @@ function getazi(circumstances) {
     }
     ans = ans + t
     if (circumstances[40] == 1) {
-        console.log("AZI: " + ans + "(below horizon)");
+        //console.log("AZI: " + ans + "(below horizon)");
         return 
     } else {
-        console.log("AZI :" + ans);
+        //console.log("AZI :" + ans);
         return 
     }
   }
@@ -705,16 +705,16 @@ function getmagnitude() {
   
     a = Math.floor(1000.0*mid[37]+0.5)/1000.0
     if (mid[40] == 1) {
-      console.log("MAGNITUDE: " + a + "(below horizon)")
+      //console.log("MAGNITUDE: " + a + "(below horizon)")
       return a + "(below horizon)"
     }
     if (mid[40] == 2) {
-      a = a + "(r)"
+      a = a //+ "(r)"
     }
     if (mid[40] == 3) {
-      a = a + "(s)"
+      a = a //+ "(s)"
     }
-    console.log("MAGNITUDE: " + a)
+    //console.log("MAGNITUDE: " + a)
     return a 
   }
 
@@ -738,7 +738,7 @@ function getcoverage() {
       a = Math.floor(1000.0*c+0.5)/1000.0
     }
     if (mid[40] == 1) {
-      console.log("COVERAGE: " + a + "(below horizon)")
+      //console.log("COVERAGE: " + a + "(below horizon)")
       return a // + "(below horizon)"
     }
     if (mid[40] == 2) {
@@ -747,7 +747,7 @@ function getcoverage() {
     if (mid[40] == 3) {
       a = a //+ "(s)"
     }
-    console.log("COVERAGE: " + a)
+    //console.log("COVERAGE: " + a)
     return a
   }
 
@@ -755,14 +755,14 @@ function getcoverage() {
 function calculatefor(lat, long, alt, timeOffset, el) {
     returnList = []
     readform(lat, long, alt, timeOffset) // sets obsvconst
-    console.log(obsvconst)
+    //console.log(obsvconst)
     for (i = 0 ; i < el.length ; i+=28) {
       obsvconst[6] = i
       getall(el)
-      //console.log(mid)
+      ////console.log(mid)
       // Is there an event...
       if (mid[39] > 0) {
-        console.log(getdate(el,mid))
+        //console.log(getdate(el,mid))
         if (mid[39] == 1) {
          val = "P"
         } else if (mid[39] == 2) {
@@ -770,7 +770,7 @@ function calculatefor(lat, long, alt, timeOffset, el) {
         } else {
           val = "T"
         }
-        console.log("ECILIPSE_TYPE: " + val)
+        //console.log("ECILIPSE_TYPE: " + val)
         // Partial eclipse start
         if (c1[40] == 4) {
         } else {
@@ -779,10 +779,10 @@ function calculatefor(lat, long, alt, timeOffset, el) {
         if (getT == "" || getT == null || getT == undefined){
           getT = "N/A"
          }
-        console.log(getT);
-        returnList.push(getT + "ec_start"); 
+        //console.log(getT);
+        //returnList.push(getT + "ec_start"); 
         // Partial eclipse alt
-        console.log(getalt(c1));
+        //console.log(getalt(c1));
         }
       // Central eclipse time  -------------------------
       if ((mid[39] > 1) && (c2[40] != 4)) {
@@ -790,8 +790,8 @@ function calculatefor(lat, long, alt, timeOffset, el) {
           if (getT == "" || getT == null || getT == undefined) {
             getT = "N/A"
           }
-          console.log(getT);
-          returnList.push(getT + "tot_start"); 
+          //console.log(getT);
+          //returnList.push(getT + "tot_start"); 
       } else {
       }
       // Maximum eclipse time -------------------------
@@ -799,42 +799,42 @@ function calculatefor(lat, long, alt, timeOffset, el) {
       if (getT == "" || getT == null || getT == undefined) {
         getT = "N/A"
       }
-      console.log(getT);
-      returnList.push(getT + "max_ec"); 
+      //console.log(getT);
+      //returnList.push(getT + "max_ec"); 
       // Maximum eclipse alt
-      console.log(getalt(mid));
+      //console.log(getalt(mid));
       // Maximum eclipse azi
-      console.log(getazi(mid));
+      //console.log(getazi(mid));
       // Central eclipse ends
       if ((mid[39] > 1) && (c3[40] != 4)) {
-        console.log(gettime(el,c3));
+        //console.log(gettime(el,c3));
       } else {
       }
         // Partial eclipse ends
         if (c4[40] == 4) {
         } else {
         // Partial eclipse ends
-        console.log(gettime(el,c4));
+        //console.log(gettime(el,c4));
         // ... sun alt
-        console.log(getalt(c4));
+        //console.log(getalt(c4));
         }
       // Eclipse magnitude ---------------------------
-      console.log(getmagnitude());
-      returnList.push(getmagnitude() + "mag"); 
+      //console.log(getmagnitude());
+      returnList.push(getmagnitude()); 
       // Coverage  ------------------------------------
-      console.log(getcoverage());
-      returnList.push(getcoverage() + "obsc");
+      //console.log(getcoverage());
+      //returnList.push(getcoverage() + "obsc");
       // Central duration
       if (mid[39] > 1) {
         val = getduration();
       } else {
         val = "-";
       }
-      console.log(val);
+      //console.log(val);
       }
     }
     var resultString = returnList.join(' ');
-    console.log(resultString);
+    //console.log(resultString);
     return resultString;
   }
 
@@ -886,7 +886,9 @@ function SE2001(lat, long, alt, timeOffset) {
   //  };
   //}
 
-recalculate(-86.5, 10.0, 250, 0);
+//poy = recalculate(10.0326, -86.503695, 0, 4);
+////console.log(poy);
+
 
 let lat = parseFloat(process.argv[2]);
 let long = parseFloat(process.argv[3]);
@@ -894,4 +896,4 @@ let alt = parseFloat(process.argv[4]);
 let timeoffset = parseFloat(process.argv[5]);
 
 let output = recalculate(lat, long, alt, 0);
-console.log(JSON.stringify({ "magnitude": output }));
+console.log(JSON.stringify(output));
