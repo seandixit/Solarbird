@@ -239,10 +239,13 @@ class _HomeTabState extends State<HomeTab> {
     if (currentTime.isBefore(timeEclipseBegins)) {
       progress = 0.0;
     } else if (currentTime.isAfter(timeEclipseEnds)) {
-      progress = 1.0;
+        if (currentTime.isAfter(timeEclipseEnds.add(Duration(hours: 24)))){
+          progress = 1000.0;
+        }
+        else {progress = 1.0;}
     } else {
       progress = (currentTime.difference(timeEclipseBegins).inSeconds /
-          timeEclipseEnds.difference(timeEclipseBegins).inSeconds)
+          (2 * (timeMaxEclipse.difference(timeEclipseBegins).inSeconds)))
           .clamp(0.0, 1.0);
     }
     // Adjust the left position of the moon container based on the progress
@@ -2516,6 +2519,7 @@ class _HomeTabState extends State<HomeTab> {
     }
   }
 
+  // TODO: SWITCH DATE
   DateTime extract24Hour(String pattern, String input) {
     RegExp regex = RegExp(pattern);
     var match = regex.firstMatch(input);
@@ -2530,7 +2534,7 @@ class _HomeTabState extends State<HomeTab> {
       DateTime time = timeFormatter.parse(extractedString);
 
       // Define the desired date
-      DateTime date = DateTime(2024, 4, 8);
+      DateTime date = DateTime(2024, 3, 19); // TODO: SWITCH DATE TO APRIL 8, 2024
 
       // Combine the time and date into a single DateTime object
       DateTime combinedDateTime = DateTime(date.year, date.month, date.day, time.hour, time.minute);
@@ -2594,9 +2598,9 @@ class _HomeTabState extends State<HomeTab> {
     setState(() {
 
       // store in shared preferences
-      timeEclipseBegins = DateTime(2024, 3, 17, 23, 41);//extract24Hour(r'(\d+:\d+:\d+)ec_start', jsStringResult);
-      timeMaxEclipse = DateTime(2024, 3, 17, 23, 47); //extract24Hour(r'(\d+:\d+:\d+)max_ec', jsStringResult);
-      timeEclipseEnds = DateTime(2024, 3, 17, 23, 52); //extract24Hour(r'(\d+:\d+:\d+)ec_ends', jsStringResult);
+      timeEclipseBegins = extract24Hour(r'(\d+:\d+:\d+)ec_start', jsStringResult);
+      timeMaxEclipse = extract24Hour(r'(\d+:\d+:\d+)max_ec', jsStringResult);
+      timeEclipseEnds = extract24Hour(r'(\d+:\d+:\d+)ec_ends', jsStringResult);
       timeTotalityBegins = extract24Hour(r'(\d+:\d+:\d+)tot_start', jsStringResult);
       timeTotalityEnds = extract24Hour(r'(\d+:\d+:\d+)tot_ends', jsStringResult);
 
@@ -2704,14 +2708,14 @@ class _HomeTabState extends State<HomeTab> {
         content: NotificationContent(
           id: 19,
           channelKey: 'scheduled',
-          title: "10 mins until Max Eclipse",
+          title: "1 min until Max Eclipse",
           body: 'Max Eclipse is at ${timeMaxEclipse}',
           category: NotificationCategory.Reminder,
           icon: 'resource://drawable/out_logo_draw2',
           backgroundColor: Color(0xFFF69A06),
         ),
         schedule: NotificationCalendar.fromDate(
-            date: timeMaxEclipse.subtract(Duration(minutes: 10))),
+            date: timeMaxEclipse.subtract(Duration(minutes: 1))),
       );
     }
   }

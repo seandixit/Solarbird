@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.eclipse"
+    package="com.shandixit.solarBird"
     android:versionCode="1"
     android:versionName="1.0.0" >
 
@@ -37,10 +37,10 @@
     </queries>
 
     <permission
-        android:name="com.example.eclipse.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:name="com.shandixit.solarBird.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.example.eclipse.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- for android -->
+    <uses-permission android:name="com.shandixit.solarBird.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- for android -->
     <!-- <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/> -->
     <!-- <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/> -->
     <!-- <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" /> -->
@@ -176,7 +176,7 @@
 
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
-            android:authorities="com.example.eclipse.firebaseinitprovider"
+            android:authorities="com.shandixit.solarBird.firebaseinitprovider"
             android:directBootAware="true"
             android:exported="false"
             android:initOrder="100" /> <!-- Needs to be explicitly declared on P+ -->
@@ -202,7 +202,7 @@
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="com.example.eclipse.androidx-startup"
+            android:authorities="com.shandixit.solarBird.androidx-startup"
             android:exported="false" >
             <meta-data
                 android:name="androidx.emoji2.text.EmojiCompatInitializer"

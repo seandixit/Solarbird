@@ -1,6 +1,6 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.example.eclipse"
+3    package="com.shandixit.solarBird"
 4    android:versionCode="1"
 5    android:versionName="1.0.0" >
 6
@@ -68,12 +68,12 @@
 38
 39    <permission
 39-->[androidx.core:core:1.9.0] C:\Users\postw\.gradle\caches\transforms-3\4dd3635bbed82c605b02fe61f947c24c\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
-40        android:name="com.example.eclipse.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+40        android:name="com.shandixit.solarBird.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
 40-->[androidx.core:core:1.9.0] C:\Users\postw\.gradle\caches\transforms-3\4dd3635bbed82c605b02fe61f947c24c\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
 41        android:protectionLevel="signature" />
 41-->[androidx.core:core:1.9.0] C:\Users\postw\.gradle\caches\transforms-3\4dd3635bbed82c605b02fe61f947c24c\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
 42
-43    <uses-permission android:name="com.example.eclipse.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- for android -->
+43    <uses-permission android:name="com.shandixit.solarBird.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- for android -->
 43-->[androidx.core:core:1.9.0] C:\Users\postw\.gradle\caches\transforms-3\4dd3635bbed82c605b02fe61f947c24c\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
 43-->[androidx.core:core:1.9.0] C:\Users\postw\.gradle\caches\transforms-3\4dd3635bbed82c605b02fe61f947c24c\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
 44    <!-- <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/> -->
@@ -311,7 +311,7 @@
 177-->[com.google.firebase:firebase-common:20.4.2] C:\Users\postw\.gradle\caches\transforms-3\2eac51aebf3540847895439f31b0eae7\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:23:9-28:39
 178            android:name="com.google.firebase.provider.FirebaseInitProvider"
 178-->[com.google.firebase:firebase-common:20.4.2] C:\Users\postw\.gradle\caches\transforms-3\2eac51aebf3540847895439f31b0eae7\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:24:13-77
-179            android:authorities="com.example.eclipse.firebaseinitprovider"
+179            android:authorities="com.shandixit.solarBird.firebaseinitprovider"
 179-->[com.google.firebase:firebase-common:20.4.2] C:\Users\postw\.gradle\caches\transforms-3\2eac51aebf3540847895439f31b0eae7\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:25:13-72
 180            android:directBootAware="true"
 180-->[com.google.firebase:firebase-common:20.4.2] C:\Users\postw\.gradle\caches\transforms-3\2eac51aebf3540847895439f31b0eae7\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:26:13-43
@@ -359,7 +359,7 @@
 203-->[androidx.emoji2:emoji2:1.2.0] C:\Users\postw\.gradle\caches\transforms-3\30f488e3c19dc9a44cbe2cb593211152\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
 204            android:name="androidx.startup.InitializationProvider"
 204-->[androidx.emoji2:emoji2:1.2.0] C:\Users\postw\.gradle\caches\transforms-3\30f488e3c19dc9a44cbe2cb593211152\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
-205            android:authorities="com.example.eclipse.androidx-startup"
+205            android:authorities="com.shandixit.solarBird.androidx-startup"
 205-->[androidx.emoji2:emoji2:1.2.0] C:\Users\postw\.gradle\caches\transforms-3\30f488e3c19dc9a44cbe2cb593211152\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
 206            android:exported="false" >
 206-->[androidx.emoji2:emoji2:1.2.0] C:\Users\postw\.gradle\caches\transforms-3\30f488e3c19dc9a44cbe2cb593211152\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37

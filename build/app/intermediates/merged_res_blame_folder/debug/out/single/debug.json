@@ -1,166 +1,158 @@
 [
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-xhdpi\\ic_launcher.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/drawable-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.eclipse.app-main-29:/drawable-xhdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-xhdpi_out_logo.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-xhdpi\\out_logo.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-xhdpi_out_logo_background.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-xhdpi/out_logo_background.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-anydpi-v26_out_logo.xml.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-anydpi-v26\\out_logo.xml"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-hdpi_out_logo.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-hdpi/out_logo.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-hdpi_out_logo_monochrome.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-hdpi\\out_logo_monochrome.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-mdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\drawable_out_logo_draw.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\drawable\\out_logo_draw.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-mdpi_launcher_icon.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-mdpi/launcher_icon.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-mdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-mdpi\\ic_launcher.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/drawable-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.eclipse.app-main-29:/drawable-xxxhdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-hdpi_launcher_icon.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-hdpi\\launcher_icon.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-xhdpi_launcher_icon.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-xhdpi/launcher_icon.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\drawable-xxhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\drawable-xxhdpi\\ic_launcher_foreground.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-hdpi_out_logo_foreground.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-hdpi/out_logo_foreground.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\drawable-v21_launch_background.xml.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\drawable-v21\\launch_background.xml"
+        "merged": "com.example.eclipse.app-merged_res-35:/drawable-hdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.eclipse.app-main-29:/drawable-hdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\drawable-xhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\drawable-xhdpi\\ic_launcher_foreground.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-hdpi_launcher_icon.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-hdpi/launcher_icon.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-xxhdpi_out_logo_foreground.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-xxhdpi\\out_logo_foreground.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-mdpi_out_logo.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-mdpi/out_logo.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-xxhdpi_out_logo_monochrome.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-xxhdpi\\out_logo_monochrome.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-hdpi_out_logo_background.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-hdpi/out_logo_background.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\drawable_out_logo_draw2.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\drawable\\out_logo_draw2.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-xxhdpi_out_logo.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-xxhdpi/out_logo.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-mdpi_launcher_icon.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-mdpi\\launcher_icon.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-xxhdpi_out_logo_background.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-xxhdpi/out_logo_background.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\drawable-mdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\drawable-mdpi\\ic_launcher_foreground.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/drawable-v21_launch_background.xml.flat",
+        "source": "com.example.eclipse.app-main-29:/drawable-v21/launch_background.xml"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-xxhdpi\\ic_launcher.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-xxxhdpi_out_logo_background.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-xxxhdpi/out_logo_background.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\drawable_out_logo.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\drawable\\out_logo.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-xxhdpi_out_logo_monochrome.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-xxhdpi/out_logo_monochrome.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\drawable-xxxhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\drawable-xxxhdpi\\ic_launcher_foreground.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/drawable-mdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.eclipse.app-main-29:/drawable-mdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-xxhdpi_out_logo.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-xxhdpi\\out_logo.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-xxxhdpi_out_logo_monochrome.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-xxxhdpi/out_logo_monochrome.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-xxxhdpi_launcher_icon.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-xxxhdpi\\launcher_icon.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-anydpi-v26_out_logo.xml.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-anydpi-v26/out_logo.xml"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-xxxhdpi_out_logo_foreground.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-xxxhdpi\\out_logo_foreground.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-hdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-hdpi_out_logo_background.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-hdpi\\out_logo_background.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-xxhdpi_out_logo_foreground.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-xxhdpi/out_logo_foreground.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-mdpi_out_logo_background.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-mdpi\\out_logo_background.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-xhdpi_out_logo.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-xhdpi/out_logo.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-xhdpi_out_logo_foreground.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-xhdpi\\out_logo_foreground.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-xxxhdpi_out_logo.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-xxxhdpi/out_logo.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-mdpi_out_logo.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-mdpi\\out_logo.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-xhdpi_out_logo_monochrome.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-xhdpi/out_logo_monochrome.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-xxxhdpi_out_logo.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-xxxhdpi\\out_logo.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-xxxhdpi_out_logo_foreground.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-xxxhdpi/out_logo_foreground.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-hdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-hdpi\\ic_launcher.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-mdpi_out_logo_monochrome.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-mdpi/out_logo_monochrome.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-xxhdpi_out_logo_background.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-xxhdpi\\out_logo_background.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-xxhdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-xxxhdpi_out_logo_monochrome.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-xxxhdpi\\out_logo_monochrome.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-xxxhdpi_launcher_icon.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-xxxhdpi/launcher_icon.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-xxxhdpi\\ic_launcher.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-anydpi-v26_launcher_icon.xml.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-anydpi-v26\\launcher_icon.xml"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-hdpi_out_logo_monochrome.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-hdpi/out_logo_monochrome.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-hdpi_out_logo.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-hdpi\\out_logo.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-xxhdpi_launcher_icon.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-xxhdpi/launcher_icon.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-xhdpi_out_logo_monochrome.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-xhdpi\\out_logo_monochrome.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-mdpi_out_logo_background.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-mdpi/out_logo_background.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\drawable-hdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\drawable-hdpi\\ic_launcher_foreground.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-mdpi_out_logo_foreground.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-mdpi/out_logo_foreground.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-xxxhdpi_out_logo_background.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-xxxhdpi\\out_logo_background.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-anydpi-v26_launcher_icon.xml.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-anydpi-v26/launcher_icon.xml"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-xhdpi_out_logo_background.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-xhdpi\\out_logo_background.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-xhdpi_out_logo_foreground.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-xhdpi/out_logo_foreground.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-mdpi_out_logo_foreground.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-mdpi\\out_logo_foreground.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/drawable_out_logo_draw2.png.flat",
+        "source": "com.example.eclipse.app-main-29:/drawable/out_logo_draw2.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-xhdpi_launcher_icon.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-xhdpi\\launcher_icon.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.example.eclipse.app-main-29:/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-mdpi_out_logo_monochrome.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-mdpi\\out_logo_monochrome.png"
-    },
-    {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-hdpi_out_logo_foreground.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-hdpi\\out_logo_foreground.png"
-    },
-    {
-        "merged": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-merged_res-35:\\mipmap-xxhdpi_launcher_icon.png.flat",
-        "source": "C:\\Users\\postw\\.gradle\\daemon\\7.5\\com.example.eclipse.app-main-29:\\mipmap-xxhdpi\\launcher_icon.png"
+        "merged": "com.example.eclipse.app-merged_res-35:/drawable-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.eclipse.app-main-29:/drawable-xxhdpi/ic_launcher_foreground.png"
     }
 ]

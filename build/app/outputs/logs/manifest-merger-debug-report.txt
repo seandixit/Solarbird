@@ -584,7 +584,7 @@ ADDED from [androidx.core:core:1.9.0] C:\Users\postw\.gradle\caches\transforms-3
 		ADDED from [androidx.core:core:1.9.0] C:\Users\postw\.gradle\caches\transforms-3\4dd3635bbed82c605b02fe61f947c24c\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
 	android:name
 		ADDED from [androidx.core:core:1.9.0] C:\Users\postw\.gradle\caches\transforms-3\4dd3635bbed82c605b02fe61f947c24c\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
-permission#com.example.eclipse.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+permission#com.shandixit.solarBird.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.9.0] C:\Users\postw\.gradle\caches\transforms-3\4dd3635bbed82c605b02fe61f947c24c\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
 	android:protectionLevel
 		ADDED from [androidx.core:core:1.9.0] C:\Users\postw\.gradle\caches\transforms-3\4dd3635bbed82c605b02fe61f947c24c\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
@@ -594,7 +594,7 @@ uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.9.0] C:\Users\postw\.gradle\caches\transforms-3\4dd3635bbed82c605b02fe61f947c24c\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
 	android:name
 		ADDED from [androidx.core:core:1.9.0] C:\Users\postw\.gradle\caches\transforms-3\4dd3635bbed82c605b02fe61f947c24c\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
-uses-permission#com.example.eclipse.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+uses-permission#com.shandixit.solarBird.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.9.0] C:\Users\postw\.gradle\caches\transforms-3\4dd3635bbed82c605b02fe61f947c24c\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
 	android:name
 		ADDED from [androidx.core:core:1.9.0] C:\Users\postw\.gradle\caches\transforms-3\4dd3635bbed82c605b02fe61f947c24c\transformed\core-1.9.0\AndroidManifest.xml:26:22-94

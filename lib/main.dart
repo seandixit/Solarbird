@@ -92,6 +92,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     double bottomNavigationBarHeight = MediaQuery.of(context).size.height * 0.08;
 
+    // TODO: CHANGE BACK
     if (_NA_verification != null && !_NA_verification!) { // return consent/emailid screen
       return MaterialApp(
         theme: ThemeData.dark().copyWith(
@@ -230,7 +231,10 @@ class _MyAppState extends State<MyApp> {
                           );
                         } else {
                           await _saveData(); // Save data to SharedPreferences
-                          setState(() {}); // Rebuild UI
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) => super.widget)); // Rebuild UI
                         }
                       },
                       style: ElevatedButton.styleFrom(
@@ -252,8 +256,12 @@ class _MyAppState extends State<MyApp> {
     }
     else{
     return MaterialApp(
-      darkTheme: ThemeData.dark(useMaterial3: true),
-      theme: ThemeData.dark(),
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: Color(0xFF1E1B22),
+      ),
+      darkTheme: ThemeData.dark(useMaterial3: true).copyWith(
+        scaffoldBackgroundColor: Color(0xFF1E1B22),
+      ),
       routes: {
         '/projectpage': (context) => const ProjectPage(),
         '/feedbackpage': (context) => const FeedbackPage(),
@@ -263,67 +271,76 @@ class _MyAppState extends State<MyApp> {
         '/birdpage': (context) => const BirdPage(),
         '/steppage': (context) => const StepPage(),
         '/practicepage': (context) => const PracticeStep(),
-
       },
       home: Scaffold(
-        body: Center(
-          child: PageView(
-            physics: const ClampingScrollPhysics(),
-            controller: controller,
-            children: _list,),
+        body: Column( // Wrap Scaffold with Column
+          children: [
+            Expanded( // Wrap Scaffold's child with Expanded
+              child: Center(
+                child: PageView(
+                  physics: const NeverScrollableScrollPhysics(),
+                  controller: controller,
+                  children: _list,
+                ),
+              ),
+            ),
+            Container( // New Container for bottom navigation
+              child: BottomNavigationBar(
+                type: BottomNavigationBarType.fixed,
+                backgroundColor: Colors.black,
+                selectedItemColor: Color(0xFFF69A06),
+                unselectedItemColor: Colors.grey,
+                selectedFontSize: 14,
+                unselectedFontSize: 12,
+                selectedLabelStyle: TextStyle(color: Colors.white),
+                unselectedLabelStyle: TextStyle(color: Colors.grey),
+                items: const <BottomNavigationBarItem>[
+                  BottomNavigationBarItem(
+                    icon: Icon(CupertinoIcons.location_circle),
+                    label: "Eclipse",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(CupertinoIcons.book),
+                    label: "Guide",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: SizedBox.shrink(),
+                    label: "",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(CupertinoIcons.list_dash),
+                    label: "Log",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(CupertinoIcons.info),
+                    label: "About",
+                  ),
+                ],
+                currentIndex: _selectedIndex,
+                onTap: _onItemTapped,
+                iconSize: 30.0,
+                elevation: 0,
+              ),
+            ),
+          ],
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: FloatingActionButton(
+        floatingActionButton: Container(
+          margin: const EdgeInsets.only(bottom:30),
+          height: 60,
+          width: 60,
+          child: FloatingActionButton(
           backgroundColor: Color(0xFFFFD700),
-          onPressed: () {controller.jumpToPage(5);},
+          onPressed: () {
+            controller.jumpToPage(5);
+          },
           shape: const CircleBorder(),
           child: Image.asset('lib/sources/bino2.png', width: 90, height: 80),
-        ),
-
-        bottomNavigationBar: SizedBox(
-          height: bottomNavigationBarHeight,
-          child: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.black, // Set background color to black
-            selectedItemColor: Color(0xFFF69A06), // Set selected item color to grey
-            unselectedItemColor: Colors.grey, // Set unselected item color to grey
-            selectedFontSize: 14, // Adjust font size for selected item
-            unselectedFontSize: 12, // Adjust font size for unselected item
-            selectedLabelStyle: TextStyle(color: Colors.white), // Set selected label text color to grey
-            unselectedLabelStyle: TextStyle(color: Colors.grey), // Set unselected label text color to grey
-
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.location_circle),
-                label: "Eclipse",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.book),
-                label: "Guide",
-              ),
-              BottomNavigationBarItem(
-                icon: SizedBox.shrink(), // Empty space for the middle
-                label: "", // No label for the empty space
-              ),
-
-              BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.list_dash),
-                label: "Log",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.info),
-                label: "About",
-              ),
-            ],
-            currentIndex: _selectedIndex,
-            onTap: _onItemTapped,
-            iconSize: 30.0,
-            elevation: 0,
-          ),
-        ),
+        ),),
       ),
     );
-  }}
+
+    }}
 
   void _onItemTapped(int index) {
     setState(() {
