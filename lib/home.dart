@@ -254,6 +254,7 @@ class _HomeTabState extends State<HomeTab> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top]);
     return MaterialApp(
       darkTheme: ThemeData.dark(useMaterial3: true),
       theme: ThemeData.dark(),
@@ -308,9 +309,43 @@ class _HomeTabState extends State<HomeTab> {
                       height: MediaQuery.of(context).size.height * 0.4,
                       child: map,
                     ),
-                    SizedBox(height: 20), // Add some spacing
-
-                  Container(
+                    SizedBox(height: 1), // Add some spacing
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 2.0), // Adjust the left padding as needed
+                        child: Row(
+                          children: [
+                            Text(
+                              "■",
+                              style: TextStyle(
+                                color: Colors.orangeAccent, // Change this to the desired color for "online"
+                              ),
+                            ),
+                            Text(
+                              " Magnitude=1.0",
+                              style: TextStyle(
+                                // Default text color or any other styles you want to apply
+                              ),
+                            ),
+                            Text(
+                              "  ■",
+                              style: TextStyle(
+                                color: Colors.red, // Change this to the desired color for "online"
+                              ),
+                            ),
+                            Text(
+                              " Max Magnitude",
+                              style: TextStyle(
+                                // Default text color or any other styles you want to apply
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Container(
                   width: double.infinity,
                     child:
                     Stack(
@@ -2534,7 +2569,8 @@ class _HomeTabState extends State<HomeTab> {
       DateTime time = timeFormatter.parse(extractedString);
 
       // Define the desired date
-      DateTime date = DateTime(2024, 3, 19); // TODO: SWITCH DATE TO APRIL 8, 2024
+      DateTime date = DateTime.now();
+      date = DateTime(date.year, date.month, date.day); // TODO: SWITCH DATE TO APRIL 8, 2024
 
       // Combine the time and date into a single DateTime object
       DateTime combinedDateTime = DateTime(date.year, date.month, date.day, time.hour, time.minute);

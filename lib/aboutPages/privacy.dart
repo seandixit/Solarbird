@@ -31,7 +31,7 @@ class PrivacyPage extends StatelessWidget{
         ),
       ),
       body: ListView(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
         children: [
           Text(
             "Overview",

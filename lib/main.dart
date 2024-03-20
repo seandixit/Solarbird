@@ -24,7 +24,12 @@ import 'package:flutter/material.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
+
   runApp(const MyApp());
 }
 
@@ -90,7 +95,10 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top]);
     double bottomNavigationBarHeight = MediaQuery.of(context).size.height * 0.08;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double buttonHeight = screenHeight * 0.070; // 20% of screen height
 
     // TODO: CHANGE BACK
     if (_NA_verification != null && !_NA_verification!) { // return consent/emailid screen
@@ -116,7 +124,7 @@ class _MyAppState extends State<MyApp> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Image(image: AssetImage('lib/sources/unlabelled_logo.jpg'), height: 330, width: 330),
+                              Image(image: AssetImage('lib/sources/unlabelled_logo.jpg'), height: 325, width: 330),
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 0),
                                 child: Text(
@@ -125,11 +133,12 @@ class _MyAppState extends State<MyApp> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
                                 child: Container(
                                   height: 50.0,
                                   width: MediaQuery.of(context).size.width - 40.0, // Adjust width here
                                   child: TextField(
+                                    cursorColor: Colors.white,
                                     onChanged: (value) {
                                       setState(() {
                                         temp_emailid = value;
@@ -140,6 +149,11 @@ class _MyAppState extends State<MyApp> {
                                     ),
                                     decoration: const InputDecoration(
                                       labelText: 'Email',
+                                      labelStyle: TextStyle(color: Colors.grey),
+                                      focusColor: Color(0xFFF69A06),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(color: Color(0xFFF69A06), width: 2.0),
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -152,10 +166,11 @@ class _MyAppState extends State<MyApp> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
                                 child: Container(
                                   height: 50.0,
                                   child: TextField(
+                                    cursorColor: Colors.white,
                                     onChanged: (value) {
                                       setState(() {
                                         temp_name = value;
@@ -166,7 +181,11 @@ class _MyAppState extends State<MyApp> {
                                     ),
                                     decoration: const InputDecoration(
                                       labelText: 'First and Last Name',
+                                      labelStyle: TextStyle(color: Colors.grey),
                                       focusColor: Color(0xFFF69A06),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(color: Color(0xFFF69A06), width: 2.0),
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -207,43 +226,49 @@ class _MyAppState extends State<MyApp> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(0),
-                  child: Container(
-                    width: double.infinity, // Width spans the whole screen
-                    height: 50,
-                    child: ElevatedButton(
-                      onPressed: () async {
-                        if (!temp_NA_verification) {
-                          // If not from North America, show dialog
-                          showDialog(
-                            context: context,
-                            builder: (context) => AlertDialog(
-                              title: Text("Alert"),
-                              content: Text("Must be from North America to continue"),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop(); // Close the dialog
-                                  },
-                                  child: Text("OK"),
-                                ),
-                              ],
-                            ),
-                          );
-                        } else {
-                          await _saveData(); // Save data to SharedPreferences
-                          Navigator.pushReplacement(
+                  child: SizedBox(
+                    height: buttonHeight,
+                    child: Container(
+                      width: double.infinity, // Width spans the whole screen
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          if (!temp_NA_verification) {
+                            // If not from North America, show dialog
+                            showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                title: Text("Alert"),
+                                content: Text("Must be from North America to continue"),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop(); // Close the dialog
+                                    },
+                                    child: Text("OK"),
+                                  ),
+                                ],
+                              ),
+                            );
+                          } else {
+                            await _saveData(); // Save data to SharedPreferences
+                            Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (BuildContext context) => super.widget)); // Rebuild UI
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: Color(0xFFF69A06),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(0.0), // Rectangular shape
+                                builder: (BuildContext context) => super.widget,
+                              ),
+                            ); // Rebuild UI
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: Color(0xFFF69A06),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(0.0), // Rectangular shape
+                          ),
                         ),
+                        child: Text(
+                                'Submit',
+                                style: TextStyle(fontSize: 14),),
                       ),
-                      child: Text('Submit'),
                     ),
                   ),
                 )

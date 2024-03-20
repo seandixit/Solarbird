@@ -7,7 +7,8 @@ class BirdPage extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Bird Bootcamp")),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 5.0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,20 +82,6 @@ class BirdPage extends StatelessWidget{
                 padding: const EdgeInsets.only(left: 10.0),
                 child: Text(
                   "Some of these behaviors can be happening at the same time.\nFor example, a bird could be perched in a tree and singing.",
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left:16, top: 12.0),
-                child: Text(
-                  "List of Birds",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 16.0, bottom: 10),
-                child: Text(
-                  "Common birds found near you",
-                  style: TextStyle(fontStyle: FontStyle.italic),
                 ),
               ),
             ],

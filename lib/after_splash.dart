@@ -41,6 +41,7 @@ class _AfterSplashPageState extends State<AfterSplashPage> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top]);
     return MaterialApp(
       title: 'Splash Screen',
       home: const SplashScreen(),
