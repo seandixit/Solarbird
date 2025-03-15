@@ -13,4 +13,28 @@ With the development of Solarbird, a community science app, we hope to encourage
 <img src="https://github.com/seandixit/Solarbird/assets/153400712/e138f45d-d9d3-4ea9-96f1-9bd3ea4c32d5" alt="Your Image" width="200" height="400">
 <img src="https://github.com/seandixit/Solarbird/assets/153400712/3d3d0554-6447-4326-9d1f-933981f54183" alt="app_screen5" width="200" height="400">
 
+# How to run
+# How to Run Solarbird App
 
+## 1. Install Dependencies
+- Download and install **Android Studio**: 👉 [Download Android Studio](https://developer.android.com/studio)  
+- Download and install **Flutter**: 👉 [Download Flutter](https://docs.flutter.dev/get-started/install)  
+
+## 2. Clone the Repository
+1. Open **Android Studio** and go to **Terminal** (bottom panel).  
+2. Run the following command to clone the repo:  
+   ```sh
+   git clone https://github.com/seandixit/Solarbird.git
+   cd Solarbird
+   ```
+## 3. Install Flutter Dependencies
+- Run:
+  ```sh
+   flutter pub get
+  ```
+
+## 4. Run the App
+- To launch the app on a connected Android device or emulator, run:
+  ```sh
+   flutter run
+  ```
