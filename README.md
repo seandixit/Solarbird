@@ -17,7 +17,7 @@ With the development of Solarbird, a community science app, we hope to encourage
 
 ## 1. Install Dependencies
 - Download and install **Android Studio**: 👉 [Download Android Studio](https://developer.android.com/studio)  
-- Download and install **Flutter**: 👉 [Download Flutter Version 3.16.8 for your OS]([https://docs.flutter.dev/get-started/install](https://docs.flutter.dev/release/archive))  
+- Download and install **Flutter**: 👉 [Download Flutter Version 3.16.8 for your OS](https://docs.flutter.dev/release/archive)  
 
 ## 2. Clone the Repository
 1. Open **Android Studio** and go to **Terminal** (bottom panel).  
