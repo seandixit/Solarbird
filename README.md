@@ -14,7 +14,6 @@ With the development of Solarbird, a community science app, we hope to encourage
 <img src="https://github.com/seandixit/Solarbird/assets/153400712/3d3d0554-6447-4326-9d1f-933981f54183" alt="app_screen5" width="200" height="400">
 
 # How to run
-# How to Run Solarbird App
 
 ## 1. Install Dependencies
 - Download and install **Android Studio**: 👉 [Download Android Studio](https://developer.android.com/studio)  
